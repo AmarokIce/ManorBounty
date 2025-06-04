@@ -1,6 +1,5 @@
 package club.someoneice.manorsbounty.common.network
 
-import club.someoneice.manorsbounty.common.tile.TileFryer
 import club.someoneice.manorsbounty.common.tile.TileOven
 import net.minecraft.core.BlockPos
 import net.minecraft.network.FriendlyByteBuf

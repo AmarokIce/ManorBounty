@@ -1,8 +1,8 @@
 package club.someoneice.manorsbounty.common.tile
 
 import club.someoneice.manorsbounty.asStack
-import club.someoneice.manorsbounty.common.menu.FryerMenu
 import club.someoneice.manorsbounty.common.block.BlockFryer
+import club.someoneice.manorsbounty.common.menu.FryerMenu
 import club.someoneice.manorsbounty.init.ModItems
 import club.someoneice.manorsbounty.init.ModTile
 import club.someoneice.manorsbounty.odds
@@ -51,7 +51,6 @@ class TileFryer(pPos: BlockPos, pBlockState: BlockState) : BlockEntity(ModTile.F
                 if (item.isEmpty) continue
                 count += item.count
             }
-
 
             if (count == 0) {
                 return

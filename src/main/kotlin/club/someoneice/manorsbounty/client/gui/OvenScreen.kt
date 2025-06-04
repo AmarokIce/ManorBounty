@@ -2,7 +2,6 @@ package club.someoneice.manorsbounty.client.gui
 
 import club.someoneice.manorsbounty.ManorsBounty
 import club.someoneice.manorsbounty.common.menu.OvenMenu
-import club.someoneice.manorsbounty.common.network.FryerPacket
 import club.someoneice.manorsbounty.common.network.OvenPacket
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen
@@ -23,7 +22,7 @@ class OvenScreen(pMenu: OvenMenu, pPlayerInventory: Inventory, pTitle: Component
         val G0 = "textures/screens/fryer_gui_0.png".toPath()
 
         fun getButton(i: Int): ResourceLocation {
-            return "textures/screens/oven_gui_botton${i + 1}.png".toPath()
+            return "textures/screens/oven_gui_button${i + 1}.png".toPath()
         }
     }
 
@@ -31,7 +30,6 @@ class OvenScreen(pMenu: OvenMenu, pPlayerInventory: Inventory, pTitle: Component
         this.imageWidth = 176
         this.imageHeight = 227
     }
-
 
     override fun renderBg(gg: GuiGraphics, pPartialTick: Float, pMouseX: Int, pMouseY: Int) {
         gg.setColor(1.0f, 1.0f, 1.0f, 1.0f)

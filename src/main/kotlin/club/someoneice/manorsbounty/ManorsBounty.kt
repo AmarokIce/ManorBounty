@@ -50,6 +50,7 @@ object ManorsBounty {
 
         MOD_BUS.addListener(this::commonInit)
         MOD_BUS.addListener(this::onClientSetup)
+        MOD_BUS.addListener(ClientHandler::initRender)
     }
 
     fun registerMessage() {

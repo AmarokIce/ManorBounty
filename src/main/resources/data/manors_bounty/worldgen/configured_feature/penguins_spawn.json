@@ -1,0 +1,7 @@
+{
+  "type": "manors_bounty:structure_feature",
+  "config": {
+    "structure": "manors_bounty:penguins",
+    "ignored_blocks": "minecraft:air"
+  }
+}

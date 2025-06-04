@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "flower_forest",
+    "birch_forest",
+    "old_growth_birch_forest"
+  ],
+  "features": "manors_bounty:strawberry_bush_spawn",
+  "step": "vegetal_decoration"
+}
