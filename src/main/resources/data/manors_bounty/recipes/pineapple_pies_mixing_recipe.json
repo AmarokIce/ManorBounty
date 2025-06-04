@@ -1,0 +1,19 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "manors_bounty:pineapple_slice"
+    },
+    {
+      "fluid": "manors_bounty:olive_oil",
+      "amount": 25
+    }
+  ],
+  "results": [
+    {
+      "item": "manors_bounty:pineapple_pies",
+      "count": 1
+    }
+  ],
+  "heatRequirement": "heated"
+}

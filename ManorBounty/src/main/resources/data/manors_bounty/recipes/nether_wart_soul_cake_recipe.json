@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "eee"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:blaze_powder"
+    },
+    "b": {
+      "item": "minecraft:nether_sprouts"
+    },
+    "c": {
+      "item": "minecraft:nether_wart"
+    },
+    "d": {
+      "item": "minecraft:magma_cream"
+    },
+    "e": {
+      "item": "minecraft:soul_soil"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:nether_wart_soul_cake",
+    "count": 1
+  }
+}

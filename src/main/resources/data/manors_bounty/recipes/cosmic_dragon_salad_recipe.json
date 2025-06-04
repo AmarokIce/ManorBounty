@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "manors_bounty:marble_bowl"
+    },
+    {
+      "item": "manors_bounty:starfruit_slice"
+    },
+    {
+      "item": "manors_bounty:starfruit_slice"
+    },
+    {
+      "item": "manors_bounty:dragon_fruit_slice"
+    },
+    {
+      "item": "manors_bounty:dragon_fruit_slice"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:cosmic_dragon_salad",
+    "count": 1
+  }
+}

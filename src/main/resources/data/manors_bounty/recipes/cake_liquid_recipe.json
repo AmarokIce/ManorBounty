@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    " e "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:sugar"
+    },
+    "b": [
+      {
+        "item": "minecraft:wheat"
+      },
+      {
+        "item": "create:wheat_flour"
+      }
+    ],
+    "c": {
+      "tag": "forge:eggs"
+    },
+    "d": {
+      "tag": "forge:milk"
+    },
+    "e": {
+      "item": "minecraft:bucket"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:cake_liquid_bucket",
+    "count": 1
+  }
+}

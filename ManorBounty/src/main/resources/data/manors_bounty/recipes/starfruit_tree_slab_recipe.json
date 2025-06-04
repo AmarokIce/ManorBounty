@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "manors_bounty:starfruit_tree_planks"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:starfruit_tree_slab",
+    "count": 6
+  }
+}

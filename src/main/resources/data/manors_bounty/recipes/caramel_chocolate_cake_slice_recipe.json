@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "manors_bounty:caramel_chocolate_cake"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  },
+  "result": [
+    {
+      "item": "manors_bounty:caramel_chocolate_cake_slice",
+      "count": 7
+    }
+  ]
+}

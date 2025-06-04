@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "manors_bounty:hamimelon_slice"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:hamimelon_seed",
+    "count": 1
+  }
+}

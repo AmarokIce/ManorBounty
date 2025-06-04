@@ -1,0 +1,30 @@
+{
+    "type":"create:mixing",
+    "ingredients": [
+    {
+      "item": "manors_bounty:apple_slice"
+    },
+    {
+      "item": "manors_bounty:apple_slice"
+    },
+    {
+      "item": "manors_bounty:apple_slice"
+    },
+    {
+      "item": "manors_bounty:apple_slice"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "fluid": "minecraft:water",
+      "amount": 250
+    }
+  ],
+  "results": [
+    {
+      "fluid": "manors_bounty:apple_juice_fluid",
+      "amount": 250
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "snowy_slopes",
+    "snowy_beach",
+    "snowy_plains",
+    "snowy_taiga",
+    "ice_spikes",
+    "frozen_ocean",
+    "frozen_peaks",
+    "frozen_river",
+    "deep_frozen_ocean"
+  ],
+  "features": "manors_bounty:pearl_rock_ore_spawn",
+  "step": "underground_ores"
+}

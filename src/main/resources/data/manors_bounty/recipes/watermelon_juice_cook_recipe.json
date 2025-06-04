@@ -1,0 +1,25 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:melon_slice"
+    },
+    {
+      "item": "minecraft:melon_slice"
+    },
+    {
+      "item": "minecraft:melon_slice"
+    },
+    {
+      "item": "minecraft:melon_slice"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:watermelon_juice"
+  },
+  "container": {
+    "item": "manors_bounty:deformed_glass_bottle"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

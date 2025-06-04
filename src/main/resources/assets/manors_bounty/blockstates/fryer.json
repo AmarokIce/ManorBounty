@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,oil=false": {
+      "model": "manors_bounty:block/fryer"
+    },
+    "facing=east,oil=false": {
+      "model": "manors_bounty:block/fryer",
+      "y": 90
+    },
+    "facing=south,oil=false": {
+      "model": "manors_bounty:block/fryer",
+      "y": 180
+    },
+    "facing=west,oil=false": {
+      "model": "manors_bounty:block/fryer",
+      "y": 270
+    },
+    "facing=north,oil=true": {
+      "model": "manors_bounty:custom/fryer_oil"
+    },
+    "facing=east,oil=true": {
+      "model": "manors_bounty:custom/fryer_oil",
+      "y": 90
+    },
+    "facing=south,oil=true": {
+      "model": "manors_bounty:custom/fryer_oil",
+      "y": 180
+    },
+    "facing=west,oil=true": {
+      "model": "manors_bounty:custom/fryer_oil",
+      "y": 270
+    }
+  }
+}

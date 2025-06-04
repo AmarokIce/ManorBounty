@@ -1,0 +1,30 @@
+{
+    "type":"create:mixing",
+    "ingredients": [
+    {
+      "item": "manors_bounty:blueberry"
+    },
+    {
+      "item": "manors_bounty:blueberry"
+    },
+    {
+      "item": "manors_bounty:strawberry"
+    },
+    {
+      "item": "manors_bounty:cherries"
+    },
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "fluid": "minecraft:milk",
+      "amount": 250
+    }
+  ],
+  "results": [
+    {
+      "fluid": "manors_bounty:grimace_shake_fluid",
+      "amount": 250
+    }
+  ]
+}

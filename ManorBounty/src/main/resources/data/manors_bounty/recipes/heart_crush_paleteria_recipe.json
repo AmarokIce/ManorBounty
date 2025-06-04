@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " ab",
+    "acd",
+    "ed "
+  ],
+  "key": {
+    "a": {
+      "item": "manors_bounty:peach"
+    },
+    "b": {
+      "item": "minecraft:ice"
+    },
+    "c": {
+      "item": "minecraft:snowball"
+    },
+    "d": {
+      "item": "manors_bounty:cherries"
+    },
+    "e": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:heart_crush_paleteria",
+    "count": 1
+  }
+}

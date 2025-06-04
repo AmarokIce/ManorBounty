@@ -1,0 +1,31 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "farmersdelight:fried_egg"
+    },
+    {
+      "item": "manors_bounty:truffle"
+    },
+    {
+      "item": "manors_bounty:cooked_botton_mushroom"
+    },
+    {
+      "item": "manors_bounty:cooked_botton_mushroom"
+    },
+    {
+      "item": "manors_bounty:cooked_botton_mushroom"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:cream_with_mushroom_soup"
+  },
+  "container": {
+    "item": "manors_bounty:marble_bowl"
+  },
+  "experience": 5,
+  "cookingtime": 400
+}

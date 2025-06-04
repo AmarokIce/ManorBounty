@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.djinfinite.manors_bounty.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "manors_bounty.refmap.json",
+  "mixins": [
+    "ItemMixin"
+  ],
+  "client": [
+    "GuiGraphicsMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

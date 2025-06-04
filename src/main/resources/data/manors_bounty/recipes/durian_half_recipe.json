@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "manors_bounty:musang_king_durian"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/axes"
+  },
+  "result": [
+    {
+      "item": "manors_bounty:half_of_musang_king_durian",
+      "count": 2
+    }
+  ]
+}

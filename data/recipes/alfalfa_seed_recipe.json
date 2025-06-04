@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "manors_bounty:alfalfa_plant"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:alfalfa_seed",
+    "count": 4
+  }
+}

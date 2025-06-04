@@ -1,0 +1,12 @@
+{
+  "type": "manors_bounty:fry_cook_recipe",
+  "ingredients": [
+    {
+      "item": "minecraft:cod"
+    }
+  ],
+  "output": {
+    "item": "minecraft:cooked_cod",
+    "count": 1
+  }
+}

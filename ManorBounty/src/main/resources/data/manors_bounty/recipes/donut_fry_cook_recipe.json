@@ -1,0 +1,12 @@
+{
+  "type": "manors_bounty:fry_cook_recipe",
+  "ingredients": [
+    {
+      "item": "minecraft:bread"
+    }
+  ],
+  "output": {
+    "item": "manors_bounty:donut",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "manors_bounty:block/cranberry_bush"
+    },
+    "age=1": {
+      "model": "manors_bounty:block/cranberry_bush_state_blockstate_0"
+    },
+    "age=2": {
+      "model": "manors_bounty:block/cranberry_bush_state_blockstate_1"
+    },
+    "age=3": {
+      "model": "manors_bounty:block/cranberry_bush_state_blockstate_2"
+    },
+    "age=4": {
+      "model": "manors_bounty:block/cranberry_bush_state_blockstate_3"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "name": "pool1",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "manors_bounty:pineapple_crop",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "manors_bounty:pineapple_crop",
+              "properties": {
+                "blockstate": {
+                  "min": 0,
+                  "max": 4
+                }
+              }
+            }
+          ],
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 1
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "state5only",
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "manors_bounty:pineapple",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "manors_bounty:pineapple_crop",
+              "properties": {
+                "blockstate": 5
+              }
+            }
+          ],
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "manors_bounty:blocks/pineapple_crop"
+}

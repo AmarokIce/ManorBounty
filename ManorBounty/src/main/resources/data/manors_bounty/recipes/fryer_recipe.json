@@ -1,0 +1,38 @@
+{
+  "type": "create:mechanical_crafting",
+  "acceptMirrored": false,
+  "key": {
+    "A": {
+      "item": "create:iron_sheet"
+    },
+    "D": {
+      "item": "create:display_board"
+    },
+    "W": {
+      "item": "create:electron_tube"
+    },
+    "F": {
+      "item": "create:fluid_tank"
+    },
+    "P": {
+      "item": "create:basin"
+    },
+    "S": {
+      "item": "manors_bounty:creativity_mechanism"
+    },
+    "N": {
+      "item": "create:nozzle"
+    }
+  },
+  "pattern": [
+    " ANA ",
+    "AWDWA",
+    "AFSFA",
+    "AAPAA",
+    " AAA "
+  ],
+  "result": {
+    "count": 1,
+    "item": "manors_bounty:fryer"
+  }
+}

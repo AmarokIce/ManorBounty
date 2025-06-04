@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "manors_bounty:scots_pine_planks"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:scots_pine_botton",
+    "count": 1
+  }
+}

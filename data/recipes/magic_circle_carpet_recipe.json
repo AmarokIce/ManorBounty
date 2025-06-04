@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "bdb",
+    "cba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:pink_carpet"
+    },
+    "b": {
+      "item": "minecraft:white_carpet"
+    },
+    "c": {
+      "item": "minecraft:magenta_carpet"
+    },
+    "d": {
+      "item": "minecraft:yellow_carpet"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:magic_circle_carpet",
+    "count": 1
+  }
+}

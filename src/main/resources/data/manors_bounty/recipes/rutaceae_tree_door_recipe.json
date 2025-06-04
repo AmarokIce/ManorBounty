@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "aa",
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "manors_bounty:rutaceae_tree_planks"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:rutaceae_tree_door",
+    "count": 3
+  }
+}

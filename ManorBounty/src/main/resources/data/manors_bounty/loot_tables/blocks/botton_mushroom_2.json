@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "manors_bounty:blocks/botton_mushroom_2",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "manors_bounty:botton_mushroom",
+          "functions": [
+            {
+              "count": 2,
+              "function": "minecraft:set_count"
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

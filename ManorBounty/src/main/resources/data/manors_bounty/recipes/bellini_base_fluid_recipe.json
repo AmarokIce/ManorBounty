@@ -1,0 +1,27 @@
+{
+    "type":"create:mixing",
+    "ingredients": [
+    {
+      "item": "manors_bounty:peach_slice"
+    },
+    {
+      "item": "manors_bounty:peach_slice"
+    },
+    {
+      "item": "manors_bounty:peach_slice"
+    },
+    {
+      "item": "minecraft:dragon_breath"
+    },
+    {
+      "fluid": "minecraft:water",
+      "amount": 250
+    }
+  ],
+  "results": [
+    {
+      "fluid": "manors_bounty:bellini_base_fluid",
+      "amount": 250
+    }
+  ]
+}

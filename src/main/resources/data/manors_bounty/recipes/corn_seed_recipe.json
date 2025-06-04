@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "manors_bounty:corn"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:corn_seed",
+    "count": 8
+  }
+}

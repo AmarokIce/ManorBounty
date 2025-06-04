@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "minecraft:apple"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  },
+  "result": [
+    {
+      "item": "manors_bounty:apple_slice",
+      "count": 3
+    },
+    {
+      "item": "manors_bounty:apple_seed",
+      "count": 1
+    }
+  ]
+}

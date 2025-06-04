@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bbb",
+    "bbb"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:dough/wheat"
+    },
+    "b": {
+      "item": "manors_bounty:cherries"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:cherries_pie",
+    "count": 1
+  }
+}

@@ -1,0 +1,27 @@
+{
+    "type":"create:mixing",
+    "ingredients": [
+    {
+      "item": "manors_bounty:blueberry"
+    },
+    {
+      "item": "manors_bounty:blueberry"
+    },
+    {
+      "item": "manors_bounty:blueberry"
+    },
+    {
+      "item": "manors_bounty:blueberry"
+    },
+    {
+      "fluid": "manors_bounty:vanilla_ice_cream_fluid",
+      "amount": 1000
+    }
+  ],
+  "results": [
+    {
+      "fluid": "manors_bounty:blueberry_ice_cream_fluid",
+      "amount": 1000
+    }
+  ]
+}

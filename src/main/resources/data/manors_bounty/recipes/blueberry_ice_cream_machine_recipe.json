@@ -1,0 +1,21 @@
+{
+  "type": "manors_bounty:ice_cream_machine_recipes",
+  "ingredients": [
+    {
+      "item": "manors_bounty:ice_cream_cone"
+    },
+    {
+      "item": "manors_bounty:blueberry"
+    },
+    {
+      "item": "manors_bounty:slot_ban_item"
+    },
+    {
+      "item": "manors_bounty:vanilla_ice_cream_fluid_bucket"
+    }
+  ],
+  "output": {
+    "item": "manors_bounty:blueberry_ice_cream",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "manors_bounty:fry_cook_recipe",
+  "ingredients": [
+    {
+      "tag": "forge:dough/wheat"
+    }
+  ],
+  "output": {
+    "item": "minecraft:bread",
+    "count": 1
+  }
+}

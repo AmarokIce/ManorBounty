@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "manors_bounty:donut"
+    },
+    {
+      "item": "manors_bounty:strawberry"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:strawberry_donut",
+    "count": 1
+  }
+}

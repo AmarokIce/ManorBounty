@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "manors_bounty:marble"
+  },
+  "result": "manors_bounty:polished_marble"
+}

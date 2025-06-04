@@ -1,0 +1,22 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "item": "minecraft:cocoa_beans"
+    },
+    {
+      "item": "minecraft:ice"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:coffee"
+  },
+  "container": {
+    "item": "manors_bounty:marble_bowl"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

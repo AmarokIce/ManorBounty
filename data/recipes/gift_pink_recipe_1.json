@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "manors_bounty:gift_short_pink"
+    },
+    {
+      "item": "manors_bounty:gift_short_pink"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:gift_tall_pink",
+    "count": 1
+  }
+}

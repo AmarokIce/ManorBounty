@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "manors_bounty:nether_wart_soul_cake_slice"
+    },
+    {
+      "item": "manors_bounty:nether_wart_soul_cake_slice"
+    },
+    {
+      "item": "manors_bounty:nether_wart_soul_cake_slice"
+    },
+    {
+      "item": "manors_bounty:nether_wart_soul_cake_slice"
+    },
+    {
+      "item": "manors_bounty:nether_wart_soul_cake_slice"
+    },
+    {
+      "item": "manors_bounty:nether_wart_soul_cake_slice"
+    },
+    {
+      "item": "manors_bounty:nether_wart_soul_cake_slice"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:nether_wart_soul_cake",
+    "count": 1
+  }
+}

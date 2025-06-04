@@ -1,0 +1,203 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    },
+    {
+      "item": "manors_bounty:olive_fruit"
+    }
+  ],
+  "results": [
+    {
+      "fluid": "manors_bounty:olive_oil",
+      "amount": 125
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "manors_bounty:fry_recipes",
+  "ingredients": [
+    {
+      "item": "manors_bounty:musang_king_durian_flesh"
+    }
+  ],
+  "output": {
+    "item": "manors_bounty:durian_crisp",
+    "count": 1
+  }
+}

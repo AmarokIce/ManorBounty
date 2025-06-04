@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "manors_bounty:vanilla_ice_cream_fluid_bucket",
+    "manors_bounty:blueberry_ice_cream_fluid_bucket",
+    "manors_bounty:cherries_ice_cream_fluid_bucket",
+    "manors_bounty:starfruit_ice_cream_fluid_bucket",
+    "manors_bounty:chocolate_ice_cream_fluid_bucket",
+    "manors_bounty:jalapeno_ice_cream_fluid_bucket",
+    "manors_bounty:olive_oil_bucket",
+    "manors_bounty:hot_spring_bucket",
+    "minecraft:bucket",
+    "minecraft:water_bucket",
+    "minecraft:pufferfish_bucket",
+    "minecraft:salmon_bucket",
+    "minecraft:cod_bucket",
+    "minecraft:tropical_fish_bucket",
+    "minecraft:axolotl_bucket",
+    "minecraft:tadpole_bucket",
+    "minecraft:lava_bucket",
+    "minecraft:milk_bucket",
+    "minecraft:powder_snow_bucket",
+    "manors_bounty:cake_liquid_bucket"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "category": "building",
+  "ingredients": [
+    {
+      "tag": "manors_bounty:avocado_tree_logs"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:avocado_tree_planks",
+    "count": 4
+  }
+}

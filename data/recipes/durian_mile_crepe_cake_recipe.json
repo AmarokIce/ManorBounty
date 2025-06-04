@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "aea"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:wheat"
+    },
+    "b": {
+      "item": "minecraft:sugar"
+    },
+    "c": {
+      "tag": "forge:milk"
+    },
+    "d": {
+      "item": "manors_bounty:musang_king_durian_flesh"
+    },
+    "e": {
+      "tag": "forge:eggs"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:durian_mile_crepe_cake",
+    "count": 1
+  }
+}

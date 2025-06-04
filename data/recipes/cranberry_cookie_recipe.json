@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:wheat"
+    },
+    "b": {
+      "item": "manors_bounty:cranberry"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:cranberry_cookie",
+    "count": 3
+  }
+}

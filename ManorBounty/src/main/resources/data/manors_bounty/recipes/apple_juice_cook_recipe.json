@@ -1,0 +1,31 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "item": "manors_bounty:apple_slice"
+    },
+    {
+      "item": "manors_bounty:apple_slice"
+    },
+    {
+      "item": "manors_bounty:apple_slice"
+    },
+    {
+      "item": "manors_bounty:apple_slice"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:ice"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:apple_juice"
+  },
+  "container": {
+    "item": "manors_bounty:deformed_glass_bottle"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

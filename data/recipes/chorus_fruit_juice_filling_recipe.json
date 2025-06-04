@@ -1,0 +1,17 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+    "item": "manors_bounty:deformed_glass_bottle"
+    },
+    {
+      "fluid": "manors_bounty:chorus_fruit_juice_fluid",
+      "amount": 250
+    }
+  ],
+  "results": [
+    {
+      "item": "manors_bounty:chorus_fruit_juice"
+    }
+  ]
+}

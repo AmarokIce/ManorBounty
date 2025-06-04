@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "manors_bounty:chorus_flower_jelly_cake"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  },
+  "result": [
+    {
+      "item": "manors_bounty:chorus_flower_jelly_cake_slice",
+      "count": 7
+    }
+  ]
+}

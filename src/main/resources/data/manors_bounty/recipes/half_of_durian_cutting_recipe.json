@@ -1,0 +1,12 @@
+{
+  "type": "manors_bounty:cutting",
+  "ingredients": [
+    {
+      "item": "manors_bounty:musang_king_durian"
+    }
+  ],
+  "output": {
+    "item": "manors_bounty:half_of_musang_king_durian",
+    "count": 2
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "manors_bounty:oven_normal_recipe",
+  "ingredients": [
+    {
+      "item": "manors_bounty:cake_liquid_bucket"
+    },
+    {
+      "item": "minecraft:paper"
+    },
+    {
+      "tag": "forge:bar_of_chocolate"
+    },
+    {
+      "tag": "forge:bar_of_chocolate"
+    },
+    {
+      "item": "manors_bounty:tem_item_250"
+    },
+    {
+      "item": "manors_bounty:time_item_5"
+    }
+  ],
+  "output": {
+    "item": "manors_bounty:chocolate_muffin",
+    "count": 4
+  }
+}

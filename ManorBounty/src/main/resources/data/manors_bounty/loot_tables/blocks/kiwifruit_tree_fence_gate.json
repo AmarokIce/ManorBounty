@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "manors_bounty:blocks/kiwifruit_tree_fence_gate",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "manors_bounty:kiwifruit_tree_fence_gate"
+        }
+      ]
+    }
+  ]
+}

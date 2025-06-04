@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "manors_bounty:gift_short_green"
+    },
+    {
+      "item": "manors_bounty:gift_short_green"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:gift_tall_green",
+    "count": 1
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "manors_bounty:starfruit_tree_log"
+    },
+    {
+      "item": "manors_bounty:starfruit_tree_log"
+    },
+    {
+      "item": "manors_bounty:starfruit_tree_log"
+    },
+    {
+      "item": "manors_bounty:starfruit_tree_log"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:starfruit_tree_wood",
+    "count": 3
+  }
+}

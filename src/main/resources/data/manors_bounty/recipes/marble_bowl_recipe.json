@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a a",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "manors_bounty:polished_marble"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:marble_bowl",
+    "count": 4
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "manors_bounty:violet_blue_plains",
+  "features": "manors_bounty:frigid_grass",
+  "step": "vegetal_decoration"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "manors_bounty:snowy_mushroom_land",
+    "sunflower_plains"
+  ],
+  "features": "manors_bounty:botton_mushroom_spawn",
+  "step": "vegetal_decoration"
+}

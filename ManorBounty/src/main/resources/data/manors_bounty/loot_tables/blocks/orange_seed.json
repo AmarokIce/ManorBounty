@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "manors_bounty:blocks/orange_seed",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "manors_bounty:orange_seed"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa ",
+    "ab ",
+    "  c"
+  ],
+  "key": {
+    "a": {
+      "item": "farmersdelight:cooked_rice"
+    },
+    "b": {
+      "item": "minecraft:cherry_leaves"
+    },
+    "c": {
+      "item": "minecraft:big_dripleaf"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:sakura_mochi",
+    "count": 1
+  }
+}

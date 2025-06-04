@@ -1,0 +1,17 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "manors_bounty:ice_cream_cone"
+    },
+    {
+      "fluid": "manors_bounty:vanilla_ice_cream_fluid",
+      "amount": 250
+    }
+  ],
+  "results": [
+    {
+      "item": "manors_bounty:vanilla_ice_cream"
+    }
+  ]
+}

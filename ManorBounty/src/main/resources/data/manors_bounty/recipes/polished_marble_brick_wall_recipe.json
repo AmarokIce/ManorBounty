@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "manors_bounty:polished_marble_brick"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:polished_marble_brick_wall",
+    "count": 6
+  }
+}

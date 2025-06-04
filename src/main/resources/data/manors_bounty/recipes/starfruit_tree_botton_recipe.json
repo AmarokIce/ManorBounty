@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "manors_bounty:starfruit_tree_planks"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:starfruit_tree_botton",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "manors_bounty:fry_recipes",
+  "ingredients": [
+    {
+      "item": "manors_bounty:raw_prawn"
+    }
+  ],
+  "output": {
+    "item": "manors_bounty:fried_tenpura",
+    "count": 1
+  }
+}

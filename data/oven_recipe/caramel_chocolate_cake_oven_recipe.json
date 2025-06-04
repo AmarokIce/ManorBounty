@@ -1,0 +1,27 @@
+{
+  "type": "manors_bounty:oven_normal_recipe",
+  "ingredients": [
+    {
+      "tag": "forge:dough/wheat"
+    },
+    {
+      "tag": "forge:bar_of_chocolate"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "tag": "manors_bounty:jei_empty_tag"
+    },
+    {
+      "item": "manors_bounty:tem_item_150"
+    },
+    {
+      "item": "manors_bounty:time_item_15"
+    }
+  ],
+  "output": {
+    "item": "manors_bounty:caramel_chocolate_cake",
+    "count": 1
+  }
+}

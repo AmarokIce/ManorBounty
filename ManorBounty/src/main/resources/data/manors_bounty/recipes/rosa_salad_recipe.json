@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "manors_bounty:marble_bowl"
+    },
+    {
+      "item": "manors_bounty:apple_slice"
+    },
+    {
+      "item": "manors_bounty:peach_slice"
+    },
+    {
+      "item": "manors_bounty:pear_slice"
+    },
+    {
+      "item": "minecraft:honey_bottle"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:rosa_salad",
+    "count": 1
+  }
+}

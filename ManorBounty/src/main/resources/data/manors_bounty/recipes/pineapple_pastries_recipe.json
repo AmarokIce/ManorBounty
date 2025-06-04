@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa ",
+    "abc",
+    " de"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:wheat"
+    },
+    "b": {
+      "item": "manors_bounty:pineapple_slice"
+    },
+    "c": {
+      "tag": "forge:milk"
+    },
+    "d": {
+      "item": "minecraft:sugar"
+    },
+    "e": {
+      "tag": "forge:eggs"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:pineapple_pastries",
+    "count": 2
+  }
+}

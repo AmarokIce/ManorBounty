@@ -1,0 +1,31 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "item": "manors_bounty:lemon_slice"
+    },
+    {
+      "item": "manors_bounty:strawberry"
+    },
+    {
+      "tag": "manors_bounty:cookable_fruits"
+    },
+    {
+      "tag": "manors_bounty:cookable_fruits"
+    },
+    {
+      "tag": "manors_bounty:cookable_fruits"
+    },
+    {
+      "item": "manors_bounty:hot_spring_bucket"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:fruit_punch"
+  },
+  "container": {
+    "item": "manors_bounty:deformed_glass_bottle"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

@@ -1,0 +1,12 @@
+{
+  "type": "manors_bounty:fry_recipes",
+  "ingredients": [
+    {
+      "item": "minecraft:chicken"
+    }
+  ],
+  "output": {
+    "item": "manors_bounty:fried_chicken",
+    "count": 1
+  }
+}

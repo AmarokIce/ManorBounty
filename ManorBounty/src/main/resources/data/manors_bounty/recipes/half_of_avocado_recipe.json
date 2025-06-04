@@ -1,0 +1,21 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "manors_bounty:avocado"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  },
+  "result": [
+    {
+      "item": "manors_bounty:half_of_avocado",
+      "count": 2
+    },
+    {
+      "item": "manors_bounty:avocado_seed",
+      "count": 1
+    }
+  ]
+}

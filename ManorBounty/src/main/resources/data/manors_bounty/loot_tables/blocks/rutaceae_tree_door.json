@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "manors_bounty:blocks/rutaceae_tree_door",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "manors_bounty:rutaceae_tree_door",
+          "conditions": [
+            {
+              "block": "manors_bounty:rutaceae_tree_door",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "manors_bounty:durian_mile_crepe_cake"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  },
+  "result": [
+    {
+      "item": "manors_bounty:durian_mile_crepe_cake_slice",
+      "count": 4
+    }
+  ]
+}

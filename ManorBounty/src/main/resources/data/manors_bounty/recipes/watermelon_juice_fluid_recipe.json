@@ -1,0 +1,23 @@
+{
+    "type":"create:mixing",
+    "ingredients": [
+    {
+      "item": "minecraft:melon_slice"
+    },
+    {
+      "item": "minecraft:melon_slice"
+    },
+    {
+      "item": "minecraft:melon_slice"
+    },
+    {
+      "item": "minecraft:melon_slice"
+    }
+  ],
+  "results": [
+    {
+      "fluid": "manors_bounty:watermelon_juice_fluid",
+      "amount": 250
+    }
+  ]
+}

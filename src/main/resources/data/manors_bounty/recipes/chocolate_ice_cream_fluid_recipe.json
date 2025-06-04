@@ -1,0 +1,27 @@
+{
+    "type":"create:mixing",
+    "ingredients": [
+    {
+      "tag": "forge:bar_of_chocolate"
+    },
+    {
+      "tag": "forge:bar_of_chocolate"
+    },
+    {
+      "tag": "forge:bar_of_chocolate"
+    },
+    {
+      "tag": "forge:bar_of_chocolate"
+    },
+    {
+      "fluid": "manors_bounty:vanilla_ice_cream_fluid",
+      "amount": 1000
+    }
+  ],
+  "results": [
+    {
+      "fluid": "manors_bounty:chocolate_ice_cream_fluid",
+      "amount": 1000
+    }
+  ]
+}

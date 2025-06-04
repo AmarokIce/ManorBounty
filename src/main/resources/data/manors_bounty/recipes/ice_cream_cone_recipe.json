@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "a a",
+    "aa "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:wheat"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:ice_cream_cone",
+    "count": 4
+  }
+}

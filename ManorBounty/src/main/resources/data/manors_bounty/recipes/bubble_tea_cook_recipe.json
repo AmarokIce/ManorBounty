@@ -1,0 +1,28 @@
+{
+  "type": "farmersdelight:cooking",
+  "ingredients": [
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "manors_bounty:pearl_rock"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    }
+  ],
+  "result": {
+    "item": "manors_bounty:bubble_tea"
+  },
+  "container": {
+    "item": "manors_bounty:deformed_glass_bottle"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

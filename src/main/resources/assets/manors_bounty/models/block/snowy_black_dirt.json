@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "manors_bounty:block/snowy_black_dirt_button",
+    "up": "manors_bounty:block/snowy_black_dirt_top",
+    "north": "manors_bounty:block/snowy_black_dirt_side",
+    "east": "manors_bounty:block/snowy_black_dirt_side",
+    "south": "manors_bounty:block/snowy_black_dirt_side",
+    "west": "manors_bounty:block/snowy_black_dirt_side",
+    "particle": "manors_bounty:block/snowy_black_dirt_button"
+  },
+  "render_type": "solid"
+}

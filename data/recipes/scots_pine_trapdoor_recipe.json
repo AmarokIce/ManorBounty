@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "manors_bounty:scots_pine_planks"
+    }
+  },
+  "result": {
+    "item": "manors_bounty:scots_pine_trapdoor",
+    "count": 2
+  }
+}
