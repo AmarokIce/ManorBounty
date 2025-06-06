@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "meadow",
-  "features": "manors_bounty:cranberry_bush_features",
-  "step": "vegetal_decoration"
-}

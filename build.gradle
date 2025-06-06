@@ -85,7 +85,7 @@ dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     implementation "thedarkcolour:kotlinforforge:$kff_version"
 
-    implementation fg.deobf("curse.maven:farmers-delight-398521:6154802")
+    implementation fg.deobf("curse.maven:farmers-delight-398521:6597298")
     implementation fg.deobf("software.bernie.geckolib:geckolib-forge-${minecraft_version}:${geckolib_version}")
 
     compileOnly fg.deobf("mezz.jei:jei-1.20.1-common-api:${jei_version}")

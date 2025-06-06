@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "minecraft:farmland",
-    "manors_bounty:rich_black_dirt_farmland",
-    "farmersdelight:rich_soil_farmland"
-  ]
-}

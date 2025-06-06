@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "manors_bounty:snowy_mushroom_land",
-  "features": "manors_bounty:debrishroom_spawn",
-  "step": "underground_ores"
-}

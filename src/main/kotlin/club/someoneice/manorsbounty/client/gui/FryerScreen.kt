@@ -69,7 +69,7 @@ class FryerScreen(pMenu: FryerMenu, pPlayerInventory: Inventory, pTitle: Compone
             blit(SLOTS, 41, 21, 52, 52)
         } else {
             blit(POT_IN, 25, 25, 84, 102)
-            val animTick = this.menu.tile.getCookingTime() / 10
+            val animTick = this.menu.tile.getCookingTime() / 5
             val tx = getAnim(animTick % 4)
             blit(tx, 51, 68, 32, 32)
 
