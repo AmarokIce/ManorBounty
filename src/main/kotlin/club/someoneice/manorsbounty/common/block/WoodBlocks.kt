@@ -1,8 +1,10 @@
 package club.someoneice.manorsbounty.common.block
 
+import club.someoneice.manorsbounty.asStack
 import club.someoneice.manorsbounty.init.ModBlocks
 import club.someoneice.manorsbounty.init.ModTabs.BUILDING_TAB
 import club.someoneice.manorsbounty.init.ModTabs.addToTab
+import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
@@ -12,6 +14,7 @@ import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.properties.BlockSetType
 import net.minecraft.world.level.block.state.properties.WoodType
 import net.minecraft.world.level.storage.loot.LootParams
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams
 import thedarkcolour.kotlinforforge.forge.registerObject
 import java.util.function.Supplier
 
@@ -71,49 +74,97 @@ class WoodBlocks(val name: String, private val fruit: Supplier<Item>? = null) {
 
     private fun getStairs() = object: StairBlock(Blocks.AIR::defaultBlockState, Properties.copy(Blocks.OAK_STAIRS)) {
         override fun getDrops(pState: BlockState, pParams: LootParams.Builder): List<ItemStack?> {
-            return super.getDrops(pState, pParams).also { it.add(Item.byBlock(this).defaultInstance) }
+            val entity = pParams.getOptionalParameter(LootContextParams.THIS_ENTITY)
+            val list = super.getDrops(pState, pParams)
+            if (entity is Player && entity.isCreative) {
+                return list
+            }
+            list.add(this.asStack())
+            return list
         }
     }
 
     private fun getSlab() = object: SlabBlock(Properties.copy(Blocks.OAK_SLAB)) {
         override fun getDrops(pState: BlockState, pParams: LootParams.Builder): List<ItemStack?> {
-            return super.getDrops(pState, pParams).also { it.add(Item.byBlock(this).defaultInstance) }
+            val entity = pParams.getOptionalParameter(LootContextParams.THIS_ENTITY)
+            val list = super.getDrops(pState, pParams)
+            if (entity is Player && entity.isCreative) {
+                return list
+            }
+            list.add(this.asStack())
+            return list
         }
     }
 
     private fun getDoor() = object: DoorBlock(Properties.copy(Blocks.OAK_DOOR), BlockSetType.OAK) {
         override fun getDrops(pState: BlockState, pParams: LootParams.Builder): List<ItemStack?> {
-            return super.getDrops(pState, pParams).also { it.add(Item.byBlock(this).defaultInstance) }
+            val entity = pParams.getOptionalParameter(LootContextParams.THIS_ENTITY)
+            val list = super.getDrops(pState, pParams)
+            if (entity is Player && entity.isCreative) {
+                return list
+            }
+            list.add(this.asStack())
+            return list
         }
     }
 
     private fun getTrapdoor() = object: TrapDoorBlock(Properties.copy(Blocks.OAK_TRAPDOOR), BlockSetType.OAK) {
         override fun getDrops(pState: BlockState, pParams: LootParams.Builder): List<ItemStack?> {
-            return super.getDrops(pState, pParams).also { it.add(Item.byBlock(this).defaultInstance) }
+            val entity = pParams.getOptionalParameter(LootContextParams.THIS_ENTITY)
+            val list = super.getDrops(pState, pParams)
+            if (entity is Player && entity.isCreative) {
+                return list
+            }
+            list.add(this.asStack())
+            return list
         }
     }
 
     private fun getFence() = object: FenceBlock(Properties.copy(Blocks.OAK_FENCE)) {
         override fun getDrops(pState: BlockState, pParams: LootParams.Builder): List<ItemStack?> {
-            return super.getDrops(pState, pParams).also { it.add(Item.byBlock(this).defaultInstance) }
+            val entity = pParams.getOptionalParameter(LootContextParams.THIS_ENTITY)
+            val list = super.getDrops(pState, pParams)
+            if (entity is Player && entity.isCreative) {
+                return list
+            }
+            list.add(this.asStack())
+            return list
         }
     }
 
     private fun getFenceGate() = object: FenceGateBlock(Properties.copy(Blocks.OAK_FENCE_GATE), WoodType.OAK) {
         override fun getDrops(pState: BlockState, pParams: LootParams.Builder): List<ItemStack?> {
-            return super.getDrops(pState, pParams).also { it.add(Item.byBlock(this).defaultInstance) }
+            val entity = pParams.getOptionalParameter(LootContextParams.THIS_ENTITY)
+            val list = super.getDrops(pState, pParams)
+            if (entity is Player && entity.isCreative) {
+                return list
+            }
+            list.add(this.asStack())
+            return list
         }
     }
 
     private fun getPressurePlate() = object: PressurePlateBlock(Sensitivity.EVERYTHING, Properties.copy(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK) {
         override fun getDrops(pState: BlockState, pParams: LootParams.Builder): List<ItemStack?> {
-            return super.getDrops(pState, pParams).also { it.add(Item.byBlock(this).defaultInstance) }
+            val entity = pParams.getOptionalParameter(LootContextParams.THIS_ENTITY)
+            val list = super.getDrops(pState, pParams)
+            if (entity is Player && entity.isCreative) {
+                return list
+            }
+            list.add(this.asStack())
+            return list
         }
     }
 
     private fun getButton() = object: ButtonBlock(Properties.copy(Blocks.OAK_BUTTON), BlockSetType.OAK, 30, true) {
         override fun getDrops(pState: BlockState, pParams: LootParams.Builder): List<ItemStack?> {
-            return super.getDrops(pState, pParams).also { it.add(Item.byBlock(this).defaultInstance) }
+            val entity = pParams.getOptionalParameter(LootContextParams.THIS_ENTITY)
+            val list = super.getDrops(pState, pParams)
+            if (entity is Player && entity.isCreative) {
+                return list
+            }
+            list.add(this.asStack())
+            return list
         }
     }
 

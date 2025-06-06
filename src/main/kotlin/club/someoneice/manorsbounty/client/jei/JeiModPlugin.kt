@@ -10,6 +10,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration
 import mezz.jei.api.registration.IRecipeRegistration
 import net.minecraft.resources.ResourceLocation
 
+@Suppress("unused")
 @JeiPlugin
 class JeiModPlugin: IModPlugin {
     override fun getPluginUid(): ResourceLocation {

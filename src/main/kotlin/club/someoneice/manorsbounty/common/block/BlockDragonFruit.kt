@@ -1,10 +1,12 @@
 package club.someoneice.manorsbounty.common.block
 
+import club.someoneice.manorsbounty.asStack
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.player.Player
+import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.*
@@ -12,6 +14,8 @@ import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.DirectionProperty
 import net.minecraft.world.level.block.state.properties.IntegerProperty
+import net.minecraft.world.level.storage.loot.LootParams
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams
 import net.minecraft.world.phys.BlockHitResult
 import kotlin.random.Random
 
@@ -26,6 +30,16 @@ class BlockDragonFruit: Block(Properties.copy(Blocks.SLIME_BLOCK)) {
             .setValue(FACING, Direction.EAST)
             .setValue(COUNT, 0)
         )
+    }
+
+    override fun getDrops(pState: BlockState, pParams: LootParams.Builder): List<ItemStack?> {
+        val entity = pParams.getOptionalParameter(LootContextParams.THIS_ENTITY)
+        val list = super.getDrops(pState, pParams)
+        if (entity is Player && entity.isCreative) {
+            return list
+        }
+        list.add(this.asStack())
+        return list
     }
 
     override fun getStateForPlacement(pContext: BlockPlaceContext): BlockState =

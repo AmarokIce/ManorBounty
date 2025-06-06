@@ -22,7 +22,7 @@ class OvenScreen(pMenu: OvenMenu, pPlayerInventory: Inventory, pTitle: Component
         val G0 = "textures/screens/fryer_gui_0.png".toPath()
 
         fun getButton(i: Int): ResourceLocation {
-            return "textures/screens/oven_gui_button${i + 1}.png".toPath()
+            return "textures/screens/oven_gui_button_${i + 1}.png".toPath()
         }
     }
 

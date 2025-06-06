@@ -22,6 +22,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty
 import net.minecraft.world.level.block.state.properties.DirectionProperty
 import net.minecraft.world.level.material.FluidState
 import net.minecraft.world.level.storage.loot.LootParams
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams
 import net.minecraft.world.phys.BlockHitResult
 import net.minecraftforge.network.NetworkHooks
 
@@ -42,7 +43,11 @@ class BlockFryer: BaseEntityBlock(Properties.copy(Blocks.IRON_BLOCK).noOcclusion
     }
 
     override fun getDrops(pState: BlockState, pParams: LootParams.Builder): List<ItemStack?> {
+        val entity = pParams.getOptionalParameter(LootContextParams.THIS_ENTITY)
         val list = super.getDrops(pState, pParams)
+        if (entity is Player && entity.isCreative) {
+            return list
+        }
         list.add(this.asStack())
         return list
     }

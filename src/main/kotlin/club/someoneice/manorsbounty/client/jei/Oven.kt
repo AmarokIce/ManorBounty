@@ -19,7 +19,6 @@ import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.Ingredient
 import java.awt.Color
-import kotlin.jvm.java
 
 class Oven(private val helper: IGuiHelper): IRecipeCategory<Oven.Recipe> {
     override fun getRecipeType(): RecipeType<Recipe> = TYPE
