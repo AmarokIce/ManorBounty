@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "desert",
-  "features": "manors_bounty:dragon_fruit_cactus_spawn",
-  "step": "vegetal_decoration"
-}

@@ -1,9 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": [
-    "snowy_taiga",
-    "taiga"
-  ],
-  "features": "manors_bounty:blue_berry_bush_features",
-  "step": "vegetal_decoration"
-}

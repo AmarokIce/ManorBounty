@@ -1,6 +1,0 @@
-{
-  "parent": "manors_bounty:displaysettings/cherries_pie_veiw",
-  "textures": {
-    "particle": "manors_bounty:block/cherries_pie_particle"
-  }
-}

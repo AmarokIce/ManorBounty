@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "manors_bounty:block/alfalfa_plant",
-    "particle": "manors_bounty:block/alfalfa_plant"
-  },
-  "render_type": "cutout"
-}

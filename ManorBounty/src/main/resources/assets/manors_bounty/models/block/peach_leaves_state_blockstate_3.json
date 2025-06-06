@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "manors_bounty:block/peach_leaves_a",
-    "particle": "manors_bounty:block/peach_leaves"
-  },
-  "render_type": "cutout_mipped"
-}

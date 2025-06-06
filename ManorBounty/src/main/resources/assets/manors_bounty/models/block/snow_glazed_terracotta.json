@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "manors_bounty:block/snow_glazed_terracotta",
-    "particle": "manors_bounty:block/snow_glazed_terracotta"
-  },
-  "render_type": "solid"
-}

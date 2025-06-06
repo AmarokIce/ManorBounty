@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "manors_bounty:block/scots_pine_sapling",
-    "particle": "manors_bounty:block/scots_pine_sapling"
-  },
-  "render_type": "cutout"
-}

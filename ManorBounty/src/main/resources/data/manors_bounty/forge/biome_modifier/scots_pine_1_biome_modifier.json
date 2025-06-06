@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "manors_bounty:violet_blue_plains",
-  "features": "manors_bounty:scots_pine_1",
-  "step": "surface_structures"
-}

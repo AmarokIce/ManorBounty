@@ -1,8 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "manors_bounty:block/pear_tree_sapling",
-    "particle": "manors_bounty:block/pear_tree_sapling"
-  },
-  "render_type": "cutout"
-}

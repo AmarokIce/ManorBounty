@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "desert",
-  "features": "manors_bounty:hamimelon_spawn",
-  "step": "top_layer_modification"
-}
