@@ -2,7 +2,7 @@
   "parent": "block/slab",
   "textures": {
     "particle": "manors_bounty:block/polished_marble",
-    "button": "manors_bounty:block/polished_marble",
+    "bottom": "manors_bounty:block/polished_marble",
     "top": "manors_bounty:block/polished_marble",
     "side": "manors_bounty:block/polished_marble"
   },

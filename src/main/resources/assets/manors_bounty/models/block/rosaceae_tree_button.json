@@ -1,5 +1,5 @@
 {
-  "parent": "block/button",
+  "parent": "block/bottom",
   "textures": {
     "particle": "manors_bounty:block/rosaceae_tree_planks",
     "texture": "manors_bounty:block/rosaceae_tree_planks"

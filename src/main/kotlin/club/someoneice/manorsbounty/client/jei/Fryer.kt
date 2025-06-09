@@ -1,6 +1,7 @@
 package club.someoneice.manorsbounty.client.jei
 
 import club.someoneice.manorsbounty.ManorsBounty
+import club.someoneice.manorsbounty.asStack
 import club.someoneice.manorsbounty.common.tile.TileFryer
 import club.someoneice.manorsbounty.init.ModBlocks
 import com.google.common.collect.Lists
@@ -13,7 +14,7 @@ import mezz.jei.api.recipe.RecipeType
 import mezz.jei.api.recipe.category.IRecipeCategory
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.ResourceLocation
-import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.crafting.Ingredient
 
 class Fryer(private val helper: IGuiHelper, private val fried: Boolean): IRecipeCategory<Fryer.Recipe> {
     override fun getRecipeType(): RecipeType<Recipe> = if (fried) FRIED else COOKED
@@ -31,16 +32,11 @@ class Fryer(private val helper: IGuiHelper, private val fried: Boolean): IRecipe
     override fun setRecipe(builder: IRecipeLayoutBuilder, recipe: Recipe, fg: IFocusGroup) {
         val output = if (fried) recipe.output else recipe.cooked
 
-        builder.addSlot(RecipeIngredientRole.INPUT, 40, 27).addItemStack(recipe.input)
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 108, 27).addItemStack(output)
+        builder.addSlot(RecipeIngredientRole.INPUT, 40, 27).addIngredients(recipe.input)
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 108, 27).addIngredients(output)
     }
 
-    @JvmRecord
-    data class Recipe(
-        val input: ItemStack,
-        val cooked: ItemStack,
-        val output: ItemStack
-    )
+    data class Recipe(val input: Ingredient, val cooked: Ingredient, val output: Ingredient)
 
     companion object {
         @JvmStatic
@@ -58,9 +54,9 @@ class Fryer(private val helper: IGuiHelper, private val fried: Boolean): IRecipe
             }
 
             TileFryer.initRecipe()
-            TileFryer.RECIPE.forEach { k, v -> {
-                RECIPE_LIST.add(Recipe(k.defaultInstance, v.first, v.second))
-            }}
+            TileFryer.RECIPE.forEach { k, v ->
+                RECIPE_LIST.add(Recipe(Ingredient.of(k.asStack()), Ingredient.of(v.first), Ingredient.of(v.second)))
+            }
 
             return RECIPE_LIST
         }

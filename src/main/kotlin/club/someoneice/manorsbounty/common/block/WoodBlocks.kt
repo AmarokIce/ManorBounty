@@ -18,6 +18,8 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams
 import thedarkcolour.kotlinforforge.forge.registerObject
 import java.util.function.Supplier
 
+
+// Fixme - Remove the leaves that never be used.
 @Suppress("unused")
 class WoodBlocks(val name: String, private val fruit: Supplier<Item>? = null) {
     val LOG = "log".toRGName()

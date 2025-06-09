@@ -134,6 +134,7 @@ class TileFryer(pPos: BlockPos, pBlockState: BlockState) : BlockEntity(ModTile.F
             RECIPE.put(Items.BREAD, Pair(Items.BREAD.asStack(), ModItems.DONUT.asStack()))
             RECIPE.put(ModItems.PINEAPPLE_SLICE, Pair(ModItems.PINEAPPLE_PASTRIES.asStack(), ModItems.PINEAPPLE_PIE.asStack()))
             RECIPE.put(ModItems.DURIAN_MILE_CREPE_CAKE_SLICE, Pair(ModItems.COOKED_DURIAN_FLESH.asStack(), ModItems.DURIAN_CRISP.asStack()))
+            RECIPE.put(ModItems.RAW_PRAWN, Pair(ModItems.COOKED_PRAWN.asStack(), ModItems.FRIED_TENPURA.asStack()))
         }
 
         private fun setOil(tile: TileFryer, world: Level) {
@@ -154,12 +155,14 @@ class TileFryer(pPos: BlockPos, pBlockState: BlockState) : BlockEntity(ModTile.F
                 world.setBlockAndUpdate(tile.blockPos, state.setValue(BlockFryer.OIL, true))
             }
 
+            val itemCopy = item.copy()
             item.shrink(1)
-            if (!item.hasCraftingRemainingItem()) {
+
+            if (!itemCopy.hasCraftingRemainingItem()) {
                 return
             }
 
-            val bk = item.craftingRemainingItem
+            val bk = itemCopy.craftingRemainingItem
             if (item.isEmpty) {
                 tile.inventory.setStackInSlot(4, bk)
                 return

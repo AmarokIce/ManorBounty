@@ -1,5 +1,5 @@
 {
-  "parent": "block/button_inventory",
+  "parent": "block/bottom_inventory",
   "textures": {
     "particle": "manors_bounty:block/alpine_tree_planks",
     "texture": "manors_bounty:block/alpine_tree_planks"

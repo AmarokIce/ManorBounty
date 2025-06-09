@@ -20,20 +20,13 @@ void scanDir(string dir) {
 void fileHandler(string file) {
     import std.stdio: writeln;
 
-    writeln(file);
-
-    if (indexOf(file, "bottom") != -1) {
-        auto str = file.replace("bottom", "button");
-        rename(file, str);
-        file = str;
-    }
-
-    if (!file.endsWith(".json")) {
+    if (!file.endsWith(".json") || file.indexOfAny("door") == -1) {
         return;
     }
 
+    writeln(file);
+
     auto dat = readText(file);
-    auto text = dat.replace("botton", "button");
-    text = text.replace("door_button", "door_bottom");
+    auto text = dat.replace("button", "bottom");
     write(file, text);
 }

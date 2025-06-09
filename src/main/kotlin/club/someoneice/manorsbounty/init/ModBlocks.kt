@@ -11,6 +11,7 @@ import club.someoneice.manorsbounty.common.block.WoodBlocks
 import club.someoneice.manorsbounty.common.tile.SimpleGeoBlock
 import club.someoneice.manorsbounty.giveOrDropItemStack
 import club.someoneice.manorsbounty.init.ModTabs.addToTab
+import net.minecraft.core.BlockPos
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.food.FoodProperties
@@ -18,15 +19,20 @@ import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.Item.Properties
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.CakeBlock
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.storage.loot.LootParams
+import net.minecraft.world.phys.shapes.CollisionContext
+import net.minecraft.world.phys.shapes.VoxelShape
 import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
 import thedarkcolour.kotlinforforge.forge.registerObject
+import java.awt.Rectangle
 import java.util.function.Supplier
 import kotlin.random.Random
 
@@ -34,6 +40,9 @@ import kotlin.random.Random
 object ModBlocks {
     val REGISTRY: DeferredRegister<Block> = DeferredRegister.create(ForgeRegistries.BLOCKS, ManorsBounty.ID)
     val ITEMS: DeferredRegister<Item> = DeferredRegister.create(ForgeRegistries.ITEMS, ManorsBounty.ID)
+
+    val BOWL_FOOD_BOX = Rectangle(2, 0, 14, 8)
+    val DRINK_FOOD_BOX = Rectangle(5, 0, 11, 14)
 
     val PINEAPPLE by REGISTRY.registerObject("pineapple", ::createFruitBlock)
     val MUSANG_KING_DURIAN by REGISTRY.registerObject("musang_king_durian", ::createFruitBlock)
@@ -56,6 +65,15 @@ object ModBlocks {
     val FRYER_ITEM = ITEMS.register("fryer") { BlockItem(FRYER.get(), Properties()).sendToRenderList().addToTab() }
     val OVEN_ITEM = ITEMS.register("oven") { BlockItem(OVEN.get(), Properties()).sendToRenderList().addToTab() }
 
+    val CARAMEL_CHOCOLATE_CAKE = REGISTRY.register("caramel_chocolate_cake") { CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)) }
+    val SWEET_BERRY_CAKE = REGISTRY.register("sweet_berry_cake") { CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)) }
+    val CHORUS_FLOWER_JELLY_CAKE = REGISTRY.register("chorus_flower_jelly_cake") { CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)) }
+    val NETHER_WART_SOUL_CAKE = REGISTRY.register("nether_wart_soul_cake") { CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)) }
+    val CARAMEL_CHOCOLATE_CAKE_ITEM = ITEMS.register("caramel_chocolate_cake") { BlockItem(CARAMEL_CHOCOLATE_CAKE.get(), Properties()).addToTab() }
+    val SWEET_BERRY_CAKE_ITEM = ITEMS.register("sweet_berry_cake") { BlockItem(SWEET_BERRY_CAKE.get(), Properties()).addToTab() }
+    val CHORUS_FLOWER_JELLY_CAKE_ITEM = ITEMS.register("chorus_flower_jelly_cake") { BlockItem(CHORUS_FLOWER_JELLY_CAKE.get(), Properties()).addToTab() }
+    val NETHER_WART_SOUL_CAKE_ITEM = ITEMS.register("nether_wart_soul_cake") { BlockItem(NETHER_WART_SOUL_CAKE.get(), Properties()).addToTab() }
+
     val SCOTS_PINE = WoodBlocks("scots_pine")
     val CHERRIES = WoodBlocks("cherries_tree")
     val STARFRUIT = WoodBlocks("starfruit_tree")
@@ -75,12 +93,17 @@ object ModBlocks {
 
     fun createBlockWithItem(name: String, sup: () -> Block): Block {
         val block by REGISTRY.registerObject(name, sup)
+
         ITEMS.registerObject(name) { BlockItem(block, Properties()) }
         return block
     }
 
-    fun blockWithFood(name: String, hunger: Int, saturation: Float, itemBack: ItemStack = ItemStack.EMPTY, maxStack: Int = 16): Block {
-        val block by REGISTRY.registerObject(name) { Block(BlockBehaviour.Properties.copy(Blocks.STONE)) }
+    fun blockWithFood(name: String, hunger: Int, saturation: Float, itemBack: ItemStack = ItemStack.EMPTY, maxStack: Int = 16, boxIndex: Rectangle= Rectangle(0, 0, 16, 16)): Block {
+        val block by REGISTRY.registerObject(name) { object: Block(BlockBehaviour.Properties.copy(Blocks.STONE)) {
+            override fun getShape(pState: BlockState, pLevel: BlockGetter, pPos: BlockPos, pContext: CollisionContext): VoxelShape {
+                return box(0.0 + boxIndex.x, 0.0 + boxIndex.y, 0.0 + boxIndex.x, 0.0 + boxIndex.width, 0.0 + boxIndex.height, 0.0 + boxIndex.width)
+            }
+        }}
         ITEMS.registerObject(name) { object: BlockItem(block, Properties().food(
             FoodProperties.Builder()
                 .nutrition(hunger)

@@ -1,55 +1,55 @@
 {
   "variants": {
-    "facing=east,half=button,shape=straight": {
+    "facing=east,half=bottom,shape=straight": {
       "model": "manors_bounty:block/marble_stairs"
     },
-    "facing=west,half=button,shape=straight": {
+    "facing=west,half=bottom,shape=straight": {
       "model": "manors_bounty:block/marble_stairs",
       "y": 180,
       "uvlock": true
     },
-    "facing=south,half=button,shape=straight": {
+    "facing=south,half=bottom,shape=straight": {
       "model": "manors_bounty:block/marble_stairs",
       "y": 90,
       "uvlock": true
     },
-    "facing=north,half=button,shape=straight": {
+    "facing=north,half=bottom,shape=straight": {
       "model": "manors_bounty:block/marble_stairs",
       "y": 270,
       "uvlock": true
     },
-    "facing=east,half=button,shape=inner_right": {
+    "facing=east,half=bottom,shape=inner_right": {
       "model": "manors_bounty:block/marble_stairs_inner"
     },
-    "facing=west,half=button,shape=inner_right": {
+    "facing=west,half=bottom,shape=inner_right": {
       "model": "manors_bounty:block/marble_stairs_inner",
       "y": 180,
       "uvlock": true
     },
-    "facing=south,half=button,shape=inner_right": {
+    "facing=south,half=bottom,shape=inner_right": {
       "model": "manors_bounty:block/marble_stairs_inner",
       "y": 90,
       "uvlock": true
     },
-    "facing=north,half=button,shape=inner_right": {
+    "facing=north,half=bottom,shape=inner_right": {
       "model": "manors_bounty:block/marble_stairs_inner",
       "y": 270,
       "uvlock": true
     },
-    "facing=east,half=button,shape=inner_left": {
+    "facing=east,half=bottom,shape=inner_left": {
       "model": "manors_bounty:block/marble_stairs_inner",
       "y": 270,
       "uvlock": true
     },
-    "facing=west,half=button,shape=inner_left": {
+    "facing=west,half=bottom,shape=inner_left": {
       "model": "manors_bounty:block/marble_stairs_inner",
       "y": 90,
       "uvlock": true
     },
-    "facing=south,half=button,shape=inner_left": {
+    "facing=south,half=bottom,shape=inner_left": {
       "model": "manors_bounty:block/marble_stairs_inner"
     },
-    "facing=north,half=button,shape=inner_left": {
+    "facing=north,half=bottom,shape=inner_left": {
       "model": "manors_bounty:block/marble_stairs_inner",
       "y": 180,
       "uvlock": true
@@ -169,38 +169,38 @@
       "y": 270,
       "uvlock": true
     },
-    "facing=east,half=button,shape=outer_right": {
+    "facing=east,half=bottom,shape=outer_right": {
       "model": "manors_bounty:block/marble_stairs_outer"
     },
-    "facing=west,half=button,shape=outer_right": {
+    "facing=west,half=bottom,shape=outer_right": {
       "model": "manors_bounty:block/marble_stairs_outer",
       "y": 180,
       "uvlock": true
     },
-    "facing=south,half=button,shape=outer_right": {
+    "facing=south,half=bottom,shape=outer_right": {
       "model": "manors_bounty:block/marble_stairs_outer",
       "y": 90,
       "uvlock": true
     },
-    "facing=north,half=button,shape=outer_right": {
+    "facing=north,half=bottom,shape=outer_right": {
       "model": "manors_bounty:block/marble_stairs_outer",
       "y": 270,
       "uvlock": true
     },
-    "facing=east,half=button,shape=outer_left": {
+    "facing=east,half=bottom,shape=outer_left": {
       "model": "manors_bounty:block/marble_stairs_outer",
       "y": 270,
       "uvlock": true
     },
-    "facing=west,half=button,shape=outer_left": {
+    "facing=west,half=bottom,shape=outer_left": {
       "model": "manors_bounty:block/marble_stairs_outer",
       "y": 90,
       "uvlock": true
     },
-    "facing=south,half=button,shape=outer_left": {
+    "facing=south,half=bottom,shape=outer_left": {
       "model": "manors_bounty:block/marble_stairs_outer"
     },
-    "facing=north,half=button,shape=outer_left": {
+    "facing=north,half=bottom,shape=outer_left": {
       "model": "manors_bounty:block/marble_stairs_outer",
       "y": 180,
       "uvlock": true

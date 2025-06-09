@@ -10,6 +10,7 @@ import club.someoneice.manorsbounty.core.ModComponents
 import club.someoneice.manorsbounty.giveOrDropItemStack
 import club.someoneice.manorsbounty.init.ModBlocks.MARBLE_BOWL
 import club.someoneice.manorsbounty.init.ModTabs.addToTab
+import net.minecraft.core.BlockPos
 import net.minecraft.network.chat.Component
 import net.minecraft.world.effect.MobEffect
 import net.minecraft.world.effect.MobEffectInstance
@@ -18,14 +19,17 @@ import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.food.FoodProperties
 import net.minecraft.world.item.*
+import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
+import net.minecraft.world.level.block.state.BlockState
+import net.minecraft.world.phys.shapes.CollisionContext
+import net.minecraft.world.phys.shapes.VoxelShape
 import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
 import net.minecraftforge.registries.RegistryObject
 import thedarkcolour.kotlinforforge.forge.registerObject
 import java.util.function.Supplier
-import kotlin.random.Random
 
 @Suppress("unused")
 object ModItems {
@@ -165,7 +169,13 @@ object ModItems {
 
     val OIL_BUCKET by REGISTRY.registerObject("olive_oil_bucket") { Item(Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)).addToTab() }
     val OIL by REGISTRY.registerObject("bottled_olive_oil") { Item(Item.Properties().craftRemainder(Items.GLASS_BOTTLE).stacksTo(1)).addToTab() }
-    
+
+    val VANILLA_CAKE_SLICE by REGISTRY.registerObject("vanilla_cake_slice") { foodBase(2, 0.1f) }
+    val CARAMEL_CHOCOLATE_CAKE_SLICE by REGISTRY.registerObject("caramel_chocolate_cake_slice") { foodBase(2, 0.1f) }
+    val SWEET_BERRY_CAKE_SLICE by REGISTRY.registerObject("sweet_berry_cake_slice") { foodBase(2, 0.1f) }
+    val CHORUS_FLOWER_JELLY_CAKE_SLICE by REGISTRY.registerObject("chorus_flower_jelly_cake_slice") { foodBase(2, 0.1f) }
+    val NETHER_WART_SOUL_CAKE_SLICE by REGISTRY.registerObject("nether_wart_soul_cake_slice") { foodBase(2, 0.1f) }
+
     private fun itemWithoutAddToTab() = Item(Item.Properties())
     private fun item() = Item(Item.Properties()).addToTab()
     private fun block(block: Block) = BlockItem(block, Item.Properties()).addToTab()
@@ -173,7 +183,7 @@ object ModItems {
     private fun foodBase(
         hunger: Int, saturation: Float, alwaysEat: Boolean = false, fastEat: Boolean = false,
         useAnim: UseAnim = UseAnim.EAT, craftingItem: ItemStack = ItemStack.EMPTY, maxStack: Int = 64,
-        tooltips: List<Component> = listOf(), onUse: (ItemStack, Level, Player) -> Unit = { _, _, _ -> },
+        tooltips: List<Component> = listOf(), onUse: (ItemStack, Level, Player) -> Unit = { _, _, _ -> }
     ): Item {
         val properties = Item.Properties()
         val foodProperties = FoodProperties.Builder()
@@ -226,9 +236,13 @@ object ModItems {
         }
     }
 
-
     private fun drinkWithBlock(name: String, hunger: Int = 3, saturation: Float = 0.1f): Supplier<Item> {
-        val block =  ModBlocks.REGISTRY.register(name, ::BlockBase)
+        val block =  ModBlocks.REGISTRY.register(name) { object: BlockBase() {
+            override fun getShape(pState: BlockState, pLevel: BlockGetter, pPos: BlockPos, pContext: CollisionContext): VoxelShape {
+                val boxIndex = ModBlocks.DRINK_FOOD_BOX
+                return box(0.0 + boxIndex.x, 0.0 + boxIndex.y, 0.0 + boxIndex.x, 0.0 + boxIndex.width, 0.0 + boxIndex.height, 0.0 + boxIndex.width)
+            }
+        }}
         val item: Supplier<Item> = REGISTRY.register(name) {
             ItemFoodBlock(block.get(), FoodProperties.Builder()
                 .nutrition(hunger).saturationMod(saturation).alwaysEat().build(), UseAnim.DRINK, craftingItem = GLASS_CUP.asStack())
@@ -247,9 +261,6 @@ object ModItems {
     private fun lemonade() = foodBase(5, 0.1f, true, fastEat = false,
         useAnim = UseAnim.DRINK, craftingItem = GLASS_CUP.asStack(), maxStack = 16, tooltips = listOf(ModComponents.LEMONADE_INFO)
     ) { _, _, player ->
-        player.getCapability(ModCapabilitiesRoot.MOD_CAPABILITIES).ifPresent {
-            it.getData().foodCooldown.foodCooldown.clear()
-        }
 
         ModEffects.REGISTRY.entries.stream()
             .map(Supplier<MobEffect>::get)
@@ -257,12 +268,5 @@ object ModItems {
             .forEach(player::removeEffect)
     }
 
-    private fun boxedLemonade() = foodBase(2, 0.1f, true, maxStack = 16,
-        tooltips = listOf(ModComponents.BOXED_LEMONADE_INFO)) { _, _, player ->
-        player.getCapability(ModCapabilitiesRoot.MOD_CAPABILITIES).ifPresent {
-            it.getData().foodCooldown.foodCooldown.apply {
-                forEach { (key, value) -> this[key] = value - Random.nextInt(360, 480 + 1) * 20 }
-            }
-        }
-    }
+    private fun boxedLemonade() = foodBase(2, 0.1f, true, maxStack = 16)
 }

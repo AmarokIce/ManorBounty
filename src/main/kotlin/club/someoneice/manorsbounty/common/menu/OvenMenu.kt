@@ -59,6 +59,6 @@ class OvenMenu(pContainerId: Int, val tile: TileOven, val playerInv: Inventory) 
         return copyOfSourceStack
     }
 
-    override fun stillValid(pPlayer: Player): Boolean = pPlayer.isAlive && pPlayer.onPos.distSqr(this.tile.blockPos) < 8
+    override fun stillValid(pPlayer: Player): Boolean = pPlayer.isAlive && pPlayer.onPos.distSqr(this.tile.blockPos) < 32
 
 }

@@ -26,15 +26,15 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams
 import net.minecraft.world.phys.BlockHitResult
 import net.minecraftforge.network.NetworkHooks
 
+// Fixme - BlockState.
 class BlockOven: BaseEntityBlock(Properties.copy(Blocks.STONE)) {
     companion object {
-        val OIL: BooleanProperty = BooleanProperty.create("oil")
         var FACING: DirectionProperty = HorizontalDirectionalBlock.FACING
     }
 
     init {
         this.registerDefaultState(
-            this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(OIL, false)
+            this.stateDefinition.any().setValue(FACING, Direction.NORTH)
         )
     }
 
@@ -91,7 +91,7 @@ class BlockOven: BaseEntityBlock(Properties.copy(Blocks.STONE)) {
     }
 
     override fun createBlockStateDefinition(pBuilder: StateDefinition.Builder<Block, BlockState>) {
-        pBuilder.add(FACING, OIL)
+        pBuilder.add(FACING)
     }
 
     override fun newBlockEntity(pPos: BlockPos, pState: BlockState): BlockEntity = TileOven(pPos, pState)

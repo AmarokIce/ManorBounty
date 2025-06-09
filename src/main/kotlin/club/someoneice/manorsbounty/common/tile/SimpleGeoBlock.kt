@@ -2,12 +2,14 @@ package club.someoneice.manorsbounty.common.tile
 
 import club.someoneice.manorsbounty.ManorsBounty
 import club.someoneice.manorsbounty.asStack
+import club.someoneice.manorsbounty.init.ModBlocks
 import club.someoneice.manorsbounty.init.ModTile
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider
 import net.minecraft.core.BlockPos
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.block.BaseEntityBlock
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
@@ -15,6 +17,8 @@ import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.storage.loot.LootParams
+import net.minecraft.world.phys.shapes.CollisionContext
+import net.minecraft.world.phys.shapes.VoxelShape
 import net.minecraftforge.registries.RegistryObject
 import software.bernie.geckolib.animatable.GeoBlockEntity
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
@@ -42,6 +46,11 @@ class SimpleGeoBlock(): BaseEntityBlock(Properties.copy(Blocks.STONE).noOcclusio
         val list = super.getDrops(pState, pParams)
         list.add(this.asStack())
         return list
+    }
+
+    override fun getShape(pState: BlockState, pLevel: BlockGetter, pPos: BlockPos, pContext: CollisionContext): VoxelShape {
+        val boxIndex = ModBlocks.BOWL_FOOD_BOX
+        return box(0.0 + boxIndex.x, 0.0 + boxIndex.y, 0.0 + boxIndex.x, 0.0 + boxIndex.width, 0.0 + boxIndex.height, 0.0 + boxIndex.width)
     }
 }
 

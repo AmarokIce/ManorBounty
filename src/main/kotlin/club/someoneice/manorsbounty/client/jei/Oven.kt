@@ -22,7 +22,7 @@ import java.awt.Color
 
 class Oven(private val helper: IGuiHelper): IRecipeCategory<Oven.Recipe> {
     override fun getRecipeType(): RecipeType<Recipe> = TYPE
-    override fun getTitle(): Component = Component.literal("油炸")
+    override fun getTitle(): Component = Component.literal("烘焙")
 
     override fun getBackground(): IDrawable {
         return helper.createDrawable(TEXTURES, 0, 0, 153, 73)
@@ -34,8 +34,8 @@ class Oven(private val helper: IGuiHelper): IRecipeCategory<Oven.Recipe> {
 
     override fun setRecipe(builder: IRecipeLayoutBuilder, recipe: Recipe, fg: IFocusGroup) {
         builder.addSlot(RecipeIngredientRole.INPUT, 23, 25).addIngredients(recipe.input0)
-        builder.addSlot(RecipeIngredientRole.INPUT, 49, 49).addIngredients(recipe.input1)
-        builder.addSlot(RecipeIngredientRole.INPUT, 23, 25).addIngredients(recipe.input2)
+        builder.addSlot(RecipeIngredientRole.INPUT, 23, 49).addIngredients(recipe.input1)
+        builder.addSlot(RecipeIngredientRole.INPUT, 49, 25).addIngredients(recipe.input2)
         builder.addSlot(RecipeIngredientRole.INPUT, 49, 49).addIngredients(recipe.input3)
         builder.addSlot(RecipeIngredientRole.OUTPUT, 106, 37).addItemStack(recipe.output)
     }
@@ -53,8 +53,6 @@ class Oven(private val helper: IGuiHelper): IRecipeCategory<Oven.Recipe> {
         gg.drawString(Minecraft.getInstance().font, (time * 5).toString() + "s", 85, 5, Color.WHITE.rgb)
     }
 
-
-    @JvmRecord
     data class Recipe(
         val input0: Ingredient,
         val input1: Ingredient,
@@ -74,17 +72,18 @@ class Oven(private val helper: IGuiHelper): IRecipeCategory<Oven.Recipe> {
         private val TEXTURES = ResourceLocation.fromNamespaceAndPath(ManorsBounty.ID, "textures/screens/oven_jei_background.png")
 
         fun build(): List<Recipe> {
-            if (!RECIPE.isNotEmpty()) {
+            if (RECIPE.isNotEmpty()) {
                 return RECIPE
             }
 
             TileOven.initRecipes()
             TileOven.RECIPES.forEach {
+                val list = it.items
                 RECIPE.add(Recipe(
-                    it.items[0],
-                    it.items[1],
-                    it.items[2],
-                    it.items[3],
+                    if (list.isNotEmpty()) list[0] else throw IllegalArgumentException("The recipe must be nots empty!"),
+                    if (list.size >= 2) list[1] else Ingredient.EMPTY,
+                    if (list.size >= 3) list[2] else Ingredient.EMPTY,
+                    if (list.size >= 4) list[3] else Ingredient.EMPTY,
                     it.out,
                     it.temp,
                     it.time

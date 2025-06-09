@@ -2,7 +2,7 @@
   "parent": "block/inner_stairs",
   "textures": {
     "particle": "manors_bounty:block/alpine_tree_planks",
-    "button": "manors_bounty:block/alpine_tree_planks",
+    "bottom": "manors_bounty:block/alpine_tree_planks",
     "top": "manors_bounty:block/alpine_tree_planks",
     "side": "manors_bounty:block/alpine_tree_planks"
   },

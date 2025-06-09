@@ -1,6 +1,6 @@
 {
   "variants": {
-    "type=button": {
+    "type=bottom": {
       "model": "manors_bounty:block/rutaceae_tree_slab"
     },
     "type=top": {

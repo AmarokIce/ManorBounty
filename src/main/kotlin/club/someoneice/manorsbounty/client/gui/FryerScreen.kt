@@ -23,7 +23,7 @@ class FryerScreen(pMenu: FryerMenu, pPlayerInventory: Inventory, pTitle: Compone
         val G0 = "textures/screens/fryer_gui_0.png".toPath()
 
         fun getButton(i: Int): ResourceLocation {
-            return if (i >= 8) BUTTON else "textures/screens/fryer_gui_work_botton_${i + 1}.png".toPath()
+            return if (i >= 8) BUTTON else "textures/screens/fryer_gui_work_button_${i + 1}.png".toPath()
         }
 
         fun getOil(i: Int): ResourceLocation {

@@ -2,7 +2,7 @@
   "parent": "block/stairs",
   "textures": {
     "particle": "manors_bounty:block/marble_brick",
-    "button": "manors_bounty:block/marble_brick",
+    "bottom": "manors_bounty:block/marble_brick",
     "top": "manors_bounty:block/marble_brick",
     "side": "manors_bounty:block/marble_brick"
   },

@@ -20,11 +20,9 @@ class JeiModPlugin: IModPlugin {
     override fun registerCategories(registration: IRecipeCategoryRegistration) {
         val helper = registration.jeiHelpers.guiHelper
 
-        registration.addRecipeCategories(
-            Fryer(helper, true),
-            Fryer(helper, false),
-            Oven(helper)
-        )
+        registration.addRecipeCategories(Fryer(helper, false))
+        registration.addRecipeCategories(Fryer(helper, true))
+        registration.addRecipeCategories(Oven(helper))
     }
 
     override fun registerRecipes(registration: IRecipeRegistration) {
@@ -34,8 +32,7 @@ class JeiModPlugin: IModPlugin {
     }
 
     override fun registerRecipeCatalysts(registration: IRecipeCatalystRegistration) {
-        registration.addRecipeCatalyst(ModBlocks.FRYER.asStack(), Fryer.FRIED, Fryer.COOKED)
-        registration.addRecipeCatalyst(ModBlocks.OVEN.asStack(), Oven.TYPE)
+        registration.addRecipeCatalyst(ModBlocks.FRYER_ITEM.asStack(), Fryer.FRIED, Fryer.COOKED)
+        registration.addRecipeCatalyst(ModBlocks.OVEN_ITEM.asStack(), Oven.TYPE)
     }
-
 }
