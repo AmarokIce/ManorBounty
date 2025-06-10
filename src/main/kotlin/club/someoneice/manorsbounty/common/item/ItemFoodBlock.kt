@@ -19,9 +19,9 @@ import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.gameevent.GameEvent
 
-class ItemFoodBlock(block: Block, private val food: FoodProperties, private val useAnim: UseAnim = UseAnim.EAT,
-                    properties: Properties = Properties(), val craftingItem: ItemStack = ItemStack.EMPTY,
-                    vararg val effects: MobEffectInstance): BlockItem(block, properties) {
+open class ItemFoodBlock(block: Block, private val food: FoodProperties, private val useAnim: UseAnim = UseAnim.EAT,
+                         properties: Properties = Properties(), val craftingItem: ItemStack = ItemStack.EMPTY,
+                         vararg val effects: MobEffectInstance): BlockItem(block, properties) {
     init {
         this.addToTab()
         ClientHandler.RENDER_LIST.push(this)

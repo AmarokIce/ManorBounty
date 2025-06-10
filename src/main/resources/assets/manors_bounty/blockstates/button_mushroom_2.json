@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "manors_bounty:block/bottom_mushroom_2"
+      "model": "manors_bounty:block/button_mushroom_2"
     }
   }
 }

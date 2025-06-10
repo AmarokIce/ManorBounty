@@ -1,4 +1,3 @@
-import std.string;
 import std.file;
 import std.regex;
 
@@ -8,7 +7,7 @@ void main() {
 
 void scanDir(string dir) {
     auto entries = dirEntries(dir, SpanMode.shallow);
-    foreach(DirEntry f; entries) {
+    foreach (DirEntry f; entries) {
         if (f.isDir) {
             scanDir(f.name);
         } else {
@@ -18,9 +17,10 @@ void scanDir(string dir) {
 }
 
 void fileHandler(string file) {
-    import std.stdio: writeln;
+    import std.stdio : writeln;
+    import std.string : indexOf, replace, endsWith;
 
-    if (!file.endsWith(".json") || file.indexOfAny("door") == -1) {
+    if (!file.endsWith(".json") || indexOf(file, "door") == -1) {
         return;
     }
 

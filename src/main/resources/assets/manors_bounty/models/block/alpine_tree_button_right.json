@@ -1,8 +1,8 @@
 {
-  "parent": "block/door_bottom_right",
+  "parent": "block/door_button_right",
   "textures": {
-    "particle": "manors_bounty:block/alpine_tree_door_bottom",
-    "bottom": "manors_bounty:block/alpine_tree_door_bottom",
+    "particle": "manors_bounty:block/alpine_tree_door_button",
+    "button": "manors_bounty:block/alpine_tree_door_button",
     "top": "manors_bounty:block/alpine_tree_door_top"
   },
   "render_type": "cutout_mipped"

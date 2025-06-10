@@ -6,7 +6,6 @@ import club.someoneice.manorsbounty.asStack
 import club.someoneice.manorsbounty.common.block.BlockBase
 import club.someoneice.manorsbounty.common.block.BlockBush
 import club.someoneice.manorsbounty.common.item.ItemFoodBlock
-import club.someoneice.manorsbounty.core.ModComponents
 import club.someoneice.manorsbounty.giveOrDropItemStack
 import club.someoneice.manorsbounty.init.ModBlocks.MARBLE_BOWL
 import club.someoneice.manorsbounty.init.ModTabs.addToTab
@@ -79,7 +78,7 @@ object ModItems {
     val BUBBLE_TEA by REGISTRY.registerObject("bubble_tea") { foodDrink(4) }
     val GRIMACE_SHAKE = drinkWithBlock("grimace_shake")
     val ORANGE_JUICE= drinkWithBlock("orange_juice")
-    val LEMONADE by REGISTRY.registerObject("lemonade", ::lemonade)
+    val LEMONADE = lemonade()
     val APPLE_JUICE = drinkWithBlock("apple_juice")
     val SUGAR_PEAR = drinkWithBlock("sugar_pear_juice")
     val BELLINI_BASE = drinkWithBlock("bellini_base", 2)
@@ -170,11 +169,11 @@ object ModItems {
     val OIL_BUCKET by REGISTRY.registerObject("olive_oil_bucket") { Item(Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)).addToTab() }
     val OIL by REGISTRY.registerObject("bottled_olive_oil") { Item(Item.Properties().craftRemainder(Items.GLASS_BOTTLE).stacksTo(1)).addToTab() }
 
-    val VANILLA_CAKE_SLICE by REGISTRY.registerObject("vanilla_cake_slice") { foodBase(2, 0.1f) }
-    val CARAMEL_CHOCOLATE_CAKE_SLICE by REGISTRY.registerObject("caramel_chocolate_cake_slice") { foodBase(2, 0.1f) }
-    val SWEET_BERRY_CAKE_SLICE by REGISTRY.registerObject("sweet_berry_cake_slice") { foodBase(2, 0.1f) }
-    val CHORUS_FLOWER_JELLY_CAKE_SLICE by REGISTRY.registerObject("chorus_flower_jelly_cake_slice") { foodBase(2, 0.1f) }
-    val NETHER_WART_SOUL_CAKE_SLICE by REGISTRY.registerObject("nether_wart_soul_cake_slice") { foodBase(2, 0.1f) }
+    val VANILLA_CAKE_SLICE by REGISTRY.registerObject("vanilla_cake_slice") { foodBase(2, 0.1f, fastEat = true) }
+    val CARAMEL_CHOCOLATE_CAKE_SLICE by REGISTRY.registerObject("caramel_chocolate_cake_slice") { foodBase(2, 0.1f, fastEat = true) }
+    val SWEET_BERRY_CAKE_SLICE by REGISTRY.registerObject("sweet_berry_cake_slice") { foodBase(2, 0.1f, fastEat = true) }
+    val CHORUS_FLOWER_JELLY_CAKE_SLICE by REGISTRY.registerObject("chorus_flower_jelly_cake_slice") { foodBase(2, 0.1f, fastEat = true) }
+    val NETHER_WART_SOUL_CAKE_SLICE by REGISTRY.registerObject("nether_wart_soul_cake_slice") { foodBase(2, 0.1f, fastEat = true) }
 
     private fun itemWithoutAddToTab() = Item(Item.Properties())
     private fun item() = Item(Item.Properties()).addToTab()
@@ -258,14 +257,26 @@ object ModItems {
         return item
     }
 
-    private fun lemonade() = foodBase(5, 0.1f, true, fastEat = false,
-        useAnim = UseAnim.DRINK, craftingItem = GLASS_CUP.asStack(), maxStack = 16, tooltips = listOf(ModComponents.LEMONADE_INFO)
-    ) { _, _, player ->
-
-        ModEffects.REGISTRY.entries.stream()
-            .map(Supplier<MobEffect>::get)
-            .filter(player::hasEffect)
-            .forEach(player::removeEffect)
+    private fun lemonade(): Supplier<Item> {
+        val block =  ModBlocks.REGISTRY.register("lemonade") { object: BlockBase() {
+            override fun getShape(pState: BlockState, pLevel: BlockGetter, pPos: BlockPos, pContext: CollisionContext): VoxelShape {
+                val boxIndex = ModBlocks.DRINK_FOOD_BOX
+                return box(0.0 + boxIndex.x, 0.0 + boxIndex.y, 0.0 + boxIndex.x, 0.0 + boxIndex.width, 0.0 + boxIndex.height, 0.0 + boxIndex.width)
+            }
+        }}
+        val item: Supplier<Item> = REGISTRY.register("lemonade") {
+            object : ItemFoodBlock(block.get(), FoodProperties.Builder()
+                .nutrition(5).saturationMod(0.1f).alwaysEat().build(), UseAnim.DRINK, craftingItem = GLASS_CUP.asStack()) {
+                override fun finishUsingItem(pStack: ItemStack, pLevel: Level, pLivingEntity: LivingEntity): ItemStack {
+                    ModEffects.REGISTRY.entries.stream()
+                        .map(Supplier<MobEffect>::get)
+                        .filter(pLivingEntity::hasEffect)
+                        .forEach(pLivingEntity::removeEffect)
+                    return super.finishUsingItem(pStack, pLevel, pLivingEntity)
+                }
+            }
+        }
+        return item
     }
 
     private fun boxedLemonade() = foodBase(2, 0.1f, true, maxStack = 16)
