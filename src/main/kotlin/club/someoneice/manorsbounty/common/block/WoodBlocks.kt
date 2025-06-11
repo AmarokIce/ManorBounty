@@ -58,7 +58,10 @@ class WoodBlocks(val name: String, private val fruit: Supplier<Item>? = null) {
     val WOOD_ITEM by ModBlocks.ITEMS.registerObject(WOOD) { BlockItem(WOOD_BLOCK, Item.Properties()).addToTab(BUILDING_TAB) }
     val STRIPPED_LOG_ITEM by ModBlocks.ITEMS.registerObject(STRIPPED_LOG) { BlockItem(STRIPPED_LOG_BLOCK, Item.Properties()).addToTab(BUILDING_TAB) }
     val STRIPPED_WOOD_ITEM by ModBlocks.ITEMS.registerObject(STRIPPED_WOOD) { BlockItem(STRIPPED_WOOD_BLOCK, Item.Properties()).addToTab(BUILDING_TAB) }
-    val LEAVES_LEAVES by ModBlocks.ITEMS.registerObject(LEAVES) { BlockItem(LEAVES_BLOCK, Item.Properties()).addToTab(BUILDING_TAB) }
+    val LEAVES_LEAVES by ModBlocks.ITEMS.registerObject(LEAVES) { BlockItem(LEAVES_BLOCK, Item.Properties()).apply {
+        if (name == "rutaceae_tree" || name == "rosaceae_tree") return@apply
+        else this.addToTab(BUILDING_TAB)
+    } }
     val PLANK_ITEM by ModBlocks.ITEMS.registerObject(PLANK) { BlockItem(PLANK_BLOCK, Item.Properties()).addToTab(BUILDING_TAB) }
     val STAIR_ITEM by ModBlocks.ITEMS.registerObject(STAIRS) { BlockItem(STAIR_BLOCK, Item.Properties()).addToTab(BUILDING_TAB) }
     val SLAB_ITEM by ModBlocks.ITEMS.registerObject(SLAB) { BlockItem(SLAB_BLOCK, Item.Properties()).addToTab(BUILDING_TAB) }
