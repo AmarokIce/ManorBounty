@@ -16,6 +16,7 @@ open class BlockBase(pProperties: Properties = Properties.copy(Blocks.GLASS)) : 
         if (entity is Player && entity.isCreative) {
             return list
         }
+
         list.add(this.asStack())
         return list
     }

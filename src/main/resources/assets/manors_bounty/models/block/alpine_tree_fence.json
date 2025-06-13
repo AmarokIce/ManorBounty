@@ -1,8 +1,3 @@
 {
-  "parent": "block/fence_side",
-  "textures": {
-    "texture": "manors_bounty:block/alpine_tree_planks",
-    "particle": "manors_bounty:block/alpine_tree_planks"
-  },
-  "render_type": "solid"
+  "parent": "minecraft:block/alpine_tree_fence_inventory"
 }

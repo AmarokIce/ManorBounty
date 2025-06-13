@@ -4,10 +4,7 @@ import club.someoneice.manorsbounty.ManorsBounty
 import club.someoneice.manorsbounty.addAndReturnSelf
 import club.someoneice.manorsbounty.asStack
 import club.someoneice.manorsbounty.client.ClientHandler.sendToRenderList
-import club.someoneice.manorsbounty.common.block.BlockDragonFruit
-import club.someoneice.manorsbounty.common.block.BlockFryer
-import club.someoneice.manorsbounty.common.block.BlockOven
-import club.someoneice.manorsbounty.common.block.WoodBlocks
+import club.someoneice.manorsbounty.common.block.*
 import club.someoneice.manorsbounty.common.tile.SimpleGeoBlock
 import club.someoneice.manorsbounty.giveOrDropItemStack
 import club.someoneice.manorsbounty.init.ModTabs.addToTab
@@ -19,6 +16,7 @@ import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.Item.Properties
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.Items
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Block
@@ -84,6 +82,9 @@ object ModBlocks {
     val MANGO = WoodBlocks("mango_tree")
     val KIWI = WoodBlocks("kiwifruit_tree")
     val AVOCADO = WoodBlocks("avocado_tree")
+
+    val CHERRIES_PIE = REGISTRY.register("cherries_pie") { BlockBigPie { Items.PUMPKIN_PIE } }
+    val CHERRIES_PIE_ITEM = ITEMS.register("cherries_pie") { BlockItem(CHERRIES_PIE.get(), Properties()).sendToRenderList().addToTab() }
 
     fun createBlockWithItem(name: String): Supplier<Block> {
         val block = REGISTRY.registerObject(name) { Block(BlockBehaviour.Properties.copy(Blocks.STONE)) }

@@ -1,7 +1,7 @@
 package club.someoneice.manorsbounty.event
 
 import club.someoneice.manorsbounty.core.FoodLevelRegister
-import club.someoneice.manorsbounty.init.ModCapabilitiesRoot
+import club.someoneice.manorsbounty.feature.FoodLevel
 import net.minecraft.world.entity.player.Player
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent
 import net.minecraftforge.eventbus.api.SubscribeEvent
@@ -20,10 +20,7 @@ object PlayerEvent {
         }
 
         val data = FoodLevelRegister.find(item.item)
-        player.getCapability(ModCapabilitiesRoot.MOD_CAPABILITIES).ifPresent {
-            if (!data.applyTo(player)) {
-                return@ifPresent
-            }
-        }
+        if (data == FoodLevel.EMPTY) return
+        data.applyTo(player)
     }
 }
