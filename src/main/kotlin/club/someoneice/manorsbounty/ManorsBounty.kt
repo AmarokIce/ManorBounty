@@ -1,8 +1,6 @@
 package club.someoneice.manorsbounty
 
 import club.someoneice.manorsbounty.client.ClientHandler
-import club.someoneice.manorsbounty.client.gui.FryerScreen
-import club.someoneice.manorsbounty.client.gui.OvenScreen
 import club.someoneice.manorsbounty.common.network.FryerPacket
 import club.someoneice.manorsbounty.common.network.OvenPacket
 import club.someoneice.manorsbounty.common.particles.Peach
@@ -12,13 +10,9 @@ import club.someoneice.manorsbounty.common.tile.TileOven
 import club.someoneice.manorsbounty.core.FoodLevelRegister
 import club.someoneice.manorsbounty.init.*
 import net.minecraft.client.Minecraft
-import net.minecraft.client.gui.screens.MenuScreens
-import net.minecraft.client.renderer.ItemBlockRenderTypes
-import net.minecraft.client.renderer.RenderType
 import net.minecraft.resources.ResourceLocation
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent
 import net.minecraftforge.fml.common.Mod
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent
 import net.minecraftforge.network.NetworkRegistry
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
@@ -49,7 +43,7 @@ object ManorsBounty {
         registerMessage()
 
         MOD_BUS.addListener(this::commonInit)
-        MOD_BUS.addListener(this::onClientSetup)
+        MOD_BUS.addListener(ClientHandler::onClientSetup)
         MOD_BUS.addListener(ClientHandler::initRender)
     }
 
@@ -63,17 +57,6 @@ object ManorsBounty {
         TileFryer.initRecipe()
         TileOven.initRecipes()
         FoodLevelRegister
-    }
-
-    fun onClientSetup(event: FMLClientSetupEvent) {
-        event.enqueueWork {
-            while (ClientHandler.RENDER_LIST.isNotEmpty()) {
-                ItemBlockRenderTypes.setRenderLayer(ClientHandler.RENDER_LIST.pop().block, RenderType.cutout())
-            }
-
-            MenuScreens.register(ModMenus.FRYER, ::FryerScreen)
-            MenuScreens.register(ModMenus.OVEN, ::OvenScreen)
-        }
     }
 
     fun registerParticle(event: RegisterParticleProvidersEvent) {

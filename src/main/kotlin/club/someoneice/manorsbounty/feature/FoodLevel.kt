@@ -25,11 +25,8 @@ sealed class FoodLevel {
         // val cooldownX = ModConfig.foodCooldownTimeX * 20
     }
 
-    object EMPTY: FoodLevel() {
+    data object EMPTY: FoodLevel() {
         override fun applyEffect(target: LivingEntity): Boolean = false
-        // override fun getCooldown(): Int = 0
-        override fun equals(other: Any?) = other is EMPTY
-        override fun hashCode() = javaClass.hashCode()
         override fun getTooltipData(): Component = Component.empty()
     }
 

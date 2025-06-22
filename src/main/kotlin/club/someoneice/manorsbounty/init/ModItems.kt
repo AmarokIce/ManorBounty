@@ -175,6 +175,9 @@ object ModItems {
     val CHORUS_FLOWER_JELLY_CAKE_SLICE by REGISTRY.registerObject("chorus_flower_jelly_cake_slice") { foodBase(2, 0.1f, fastEat = true) }
     val NETHER_WART_SOUL_CAKE_SLICE by REGISTRY.registerObject("nether_wart_soul_cake_slice") { foodBase(2, 0.1f, fastEat = true) }
 
+    val CHERRIES_PIE_SLICE by REGISTRY.registerObject("cherries_pie_slice") { foodBase(8, 0.5f) }
+    val TRUFFLE_PIE_SLICE by REGISTRY.registerObject("truffle_pie_slice") { foodBase(6, 0.3f) }
+
     private fun itemWithoutAddToTab() = Item(Item.Properties())
     private fun item() = Item(Item.Properties()).addToTab()
     private fun block(block: Block) = BlockItem(block, Item.Properties()).addToTab()

@@ -6,8 +6,14 @@ import club.someoneice.manorsbounty.asStack
 import club.someoneice.manorsbounty.client.ClientHandler.sendToRenderList
 import club.someoneice.manorsbounty.common.block.*
 import club.someoneice.manorsbounty.common.tile.SimpleGeoBlock
+import club.someoneice.manorsbounty.common.tile.SimpleGeoBlockTile
+import club.someoneice.manorsbounty.common.tile.SimpleGeoBlockWithFacing
 import club.someoneice.manorsbounty.giveOrDropItemStack
+import club.someoneice.manorsbounty.init.ModTabs.BUILDING_TAB
+import club.someoneice.manorsbounty.init.ModTabs.DEFAULT_TAB
+import club.someoneice.manorsbounty.init.ModTabs.TabList
 import club.someoneice.manorsbounty.init.ModTabs.addToTab
+import club.someoneice.manorsbounty.init.ModTile.push
 import net.minecraft.core.BlockPos
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.player.Player
@@ -16,12 +22,10 @@ import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.Item.Properties
 import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.Items
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
-import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.Blocks
-import net.minecraft.world.level.block.CakeBlock
+import net.minecraft.world.level.block.*
+import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.storage.loot.LootParams
@@ -83,24 +87,73 @@ object ModBlocks {
     val KIWI = WoodBlocks("kiwifruit_tree")
     val AVOCADO = WoodBlocks("avocado_tree")
 
-    val CHERRIES_PIE = REGISTRY.register("cherries_pie") { BlockBigPie { Items.PUMPKIN_PIE } }
+    val CHERRIES_PIE = REGISTRY.register("cherries_pie") { BlockBigPie("cherries_pie") { ModItems.CHERRIES_PIE_SLICE } }
     val CHERRIES_PIE_ITEM = ITEMS.register("cherries_pie") { BlockItem(CHERRIES_PIE.get(), Properties()).sendToRenderList().addToTab() }
 
-    fun createBlockWithItem(name: String): Supplier<Block> {
-        val block = REGISTRY.registerObject(name) { Block(BlockBehaviour.Properties.copy(Blocks.STONE)) }
-        ITEMS.registerObject(name) { BlockItem(block.get(), Properties()).addToTab() }
+    val TRUFFLE_PIE = REGISTRY.register("truffle_pie") { BlockBigPie("truffle_pie") { ModItems.TRUFFLE_PIE_SLICE } }
+    val TRUFFLE_PIE_ITEM = ITEMS.register("truffle_pie") { BlockItem(TRUFFLE_PIE.get(), Properties()).sendToRenderList().addToTab() }
+
+    val HOUNDSTOOTH_CARPET = REGISTRY.register("houndstooth_carpet") { BlockBigCarpet("houndstooth_carpet") }
+    val SHIRAZ_CARPET = REGISTRY.register("shiraz_carpet") { BlockBigCarpet("shiraz_carpet") }
+    val MAGIC_CIRCLE_CARPET = REGISTRY.register("magic_circle_carpet") { BlockBigCarpet("magic_circle_carpet") }
+    val PICNIC_MAT = REGISTRY.register("picnic_mat") { BlockBigCarpet("picnic_mat") }
+    val ITEM_HOUNDSTOOTH_CARPET = ITEMS.register("houndstooth_carpet") { BlockItem(HOUNDSTOOTH_CARPET.get(), Properties()).sendToRenderList().addToTab(BUILDING_TAB) }
+    val ITEM_SHIRAZ_CARPET = ITEMS.register("shiraz_carpet") { BlockItem(SHIRAZ_CARPET.get(), Properties()).sendToRenderList().addToTab(BUILDING_TAB) }
+    val ITEM_MAGIC_CIRCLE_CARPET = ITEMS.register("magic_circle_carpet") { BlockItem(MAGIC_CIRCLE_CARPET.get(), Properties()).sendToRenderList().addToTab(BUILDING_TAB) }
+    val ITEM_PICNIC_MAT = ITEMS.register("picnic_mat") { BlockItem(PICNIC_MAT.get(), Properties()).sendToRenderList().addToTab(BUILDING_TAB) }
+
+    val MARBLE = createBlockWithItem("marble", BUILDING_TAB)
+    val POLISHED_MARBLE = createBlockWithItem("polished_marble", BUILDING_TAB)
+    val POLISHED_MARBLE_BRICK = createBlockWithItem("polished_marble_brick", BUILDING_TAB)
+    val MARBLE_WALL = createBlockWithItem("marble_wall", BUILDING_TAB) { WallBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_WALL)) }
+    val POLISHED_MARBLE_WALL = createBlockWithItem("polished_marble_wall", BUILDING_TAB) { WallBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_WALL)) }
+    val POLISHED_MARBLE_BRICK_WALL = createBlockWithItem("polished_marble_brick_wall", BUILDING_TAB) { WallBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_WALL)) }
+    val MARBLE_SLAB = createBlockWithItem("marble_slab", BUILDING_TAB) { SlabBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_SLAB)) }
+    val POLISHED_MARBLE_SLAB = createBlockWithItem("polished_marble_slab", BUILDING_TAB) { SlabBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_SLAB)) }
+    val POLISHED_MARBLE_BRICK_SLAB = createBlockWithItem("polished_marble_brick_slab", BUILDING_TAB) { SlabBlock(BlockBehaviour.Properties.copy(Blocks.BRICK_SLAB)) }
+    val MARBLE_STAIRS = createBlockWithItem("marble_stairs", BUILDING_TAB) { StairBlock({ MARBLE.get().defaultBlockState() }, BlockBehaviour.Properties.copy(Blocks.BRICK_STAIRS)) }
+    val POLISHED_MARBLE_STAIRS = createBlockWithItem("polished_marble_stairs", BUILDING_TAB) { StairBlock({ POLISHED_MARBLE.get().defaultBlockState() }, BlockBehaviour.Properties.copy(Blocks.BRICK_STAIRS)) }
+    val POLISHED_MARBLE_BRICK_STAIRS = createBlockWithItem("polished_marble_brick_stairs", BUILDING_TAB) { StairBlock({ POLISHED_MARBLE_BRICK.get().defaultBlockState() }, BlockBehaviour.Properties.copy(Blocks.BRICK_STAIRS)) }
+
+    val SNOW_TERRACOTTA = createBlockWithItem("snow_terracotta", BUILDING_TAB)
+    val SNOW_GLAZED_TERRACOTTA = createBlockWithItem("snow_glazed_terracotta", BUILDING_TAB)
+    val SNOW_CONCRETE_POWDER = createBlockWithItem("snow_concrete_powder", BUILDING_TAB)
+    val SNOW_CONCRETE = createBlockWithItem("snow_concrete", BUILDING_TAB)
+
+    val GIFT_TALL_RED = createGiftWithItem("gift_tall_red", false)
+    val GIFT_TALL_GREEN = createGiftWithItem("gift_tall_green", false)
+    val GIFT_TALL_BLUE = createGiftWithItem("gift_tall_blue", false)
+    val GIFT_TALL_PINK = createGiftWithItem("gift_tall_pink", false)
+    val GIFT_TALL_LUCKY = createGiftWithItem("gift_tall_lucky", false)
+    val GIFT_SHORT_RED = createGiftWithItem("gift_short_red", true)
+    val GIFT_SHORT_GREEN = createGiftWithItem("gift_short_green", true)
+    val GIFT_SHORT_BLUE = createGiftWithItem("gift_short_blue", true)
+    val GIFT_SHORT_PINK = createGiftWithItem("gift_short_pink", true)
+    val GIFT_SHORT_LUCKY = createGiftWithItem("gift_short_lucky", true)
+
+    val CHRISTMAS_WREATHS = createSimpleGeoBlockWithFacing("christmas_wreaths")
+    val CHRISTMAS_SOCK = createSimpleGeoBlockWithFacing("christmas_sock")
+    val CHRISTMAS_RIBBON_WHITE = createSimpleGeoBlockWithFacing("christmas_ribbon_white")
+    val CHRISTMAS_RIBBON_BLUE = createSimpleGeoBlockWithFacing("christmas_ribbon_blue")
+    val CHRISTMAS_RIBBON_YELLOW = createSimpleGeoBlockWithFacing("christmas_ribbon_yellow")
+    val CHRISTMAS_RIBBON_RED = createSimpleGeoBlockWithFacing("christmas_ribbon_red")
+
+
+    fun createBlockWithItem(name: String, tab: TabList = DEFAULT_TAB): Supplier<out Block> {
+        val block = REGISTRY.register(name, ::BlockBase)
+        ITEMS.registerObject(name) { BlockItem(block.get(), Properties()).addToTab(tab) }
         return block
     }
 
-    fun createBlockWithItem(name: String, sup: () -> Block): Block {
-        val block by REGISTRY.registerObject(name, sup)
+    fun createBlockWithItem(name: String, tab: TabList = DEFAULT_TAB, sup: () -> Block): Supplier<out Block> {
+        val block = REGISTRY.registerObject(name, sup)
 
-        ITEMS.registerObject(name) { BlockItem(block, Properties()) }
+        ITEMS.registerObject(name) { BlockItem(block.get(), Properties()).addToTab(tab) }
         return block
     }
 
     fun blockWithFood(name: String, hunger: Int, saturation: Float, itemBack: ItemStack = ItemStack.EMPTY, maxStack: Int = 16, boxIndex: Rectangle= Rectangle(0, 0, 16, 16)): Block {
-        val block by REGISTRY.registerObject(name) { object: Block(BlockBehaviour.Properties.copy(Blocks.STONE)) {
+        val block by REGISTRY.registerObject(name) { object: Block(Properties.copy(Blocks.STONE)) {
             override fun getShape(pState: BlockState, pLevel: BlockGetter, pPos: BlockPos, pContext: CollisionContext): VoxelShape {
                 return box(0.0 + boxIndex.x, 0.0 + boxIndex.y, 0.0 + boxIndex.x, 0.0 + boxIndex.width, 0.0 + boxIndex.height, 0.0 + boxIndex.width)
             }
@@ -122,7 +175,6 @@ object ModBlocks {
         return block
     }
 
-
     fun createFruitBlock() = object: Block(Properties.copy(Blocks.MELON).instabreak().noOcclusion()) {
         override fun getDrops(pState: BlockState, pParams: LootParams.Builder): MutableList<ItemStack> =
             super.getDrops(pState, pParams).addAndReturnSelf(this.asItem().asStack())
@@ -133,4 +185,23 @@ object ModBlocks {
             super.getDrops(pState, pParams).addAndReturnSelf(ModItems.HAMIMELON_SLICE.asStack(Random.nextInt(2, 6)))
     }
 
+    private fun createGiftWithItem(name: String, isShort: Boolean): Supplier<out Block> {
+        val block = REGISTRY.register(name) { object: SimpleGeoBlock() {
+            override fun getShape(pState: BlockState, pLevel: BlockGetter, pPos: BlockPos, pContext: CollisionContext): VoxelShape {
+                return box(1.0, 0.0, 1.0, 15.0, if (isShort) 8.0 else 16.0, 15.0)
+            }
+        }}
+
+        ModTile.REGISTRY.register(name) { BlockEntityType.Builder.of(::SimpleGeoBlockTile, block.get()).build(null).push(block) }
+        ITEMS.registerObject(name) { BlockItem(block.get(), Properties()).addToTab(BUILDING_TAB) }
+        return block
+    }
+
+    private fun createSimpleGeoBlockWithFacing(name: String): Supplier<out Block> {
+        val block = REGISTRY.register(name, ::SimpleGeoBlockWithFacing)
+        ModTile.REGISTRY.register(name) { BlockEntityType.Builder.of(::SimpleGeoBlockTile, block.get()).build(null).push(block) }
+
+        ITEMS.registerObject(name) { BlockItem(block.get(), Properties()).addToTab(BUILDING_TAB) }
+        return block
+    }
 }

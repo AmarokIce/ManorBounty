@@ -20,13 +20,13 @@ void fileHandler(string file) {
     import std.stdio : writeln;
     import std.string : indexOf, replace, endsWith;
 
-    if (!file.endsWith(".json") || indexOf(file, "door") == -1) {
+    if (!file.endsWith(".json")) {
         return;
     }
 
     writeln(file);
 
     auto dat = readText(file);
-    auto text = dat.replace("button", "bottom");
+    auto text = dat.replace("manors_bounty:texture/block", "manors_bounty:block");
     write(file, text);
 }

@@ -1,10 +1,34 @@
 {
   "variants": {
-    "blockstate=0": {
+    "facing=north,up=false": {
       "model": "manors_bounty:custom/picnic_mat_particle"
     },
-    "blockstate=1": {
+    "facing=east,up=false": {
+      "model": "manors_bounty:custom/picnic_mat_particle",
+      "y": 90
+    },
+    "facing=south,up=false": {
+      "model": "manors_bounty:custom/picnic_mat_particle",
+      "y": 180
+    },
+    "facing=west,up=false": {
+      "model": "manors_bounty:custom/picnic_mat_particle",
+      "y": 270
+    },
+    "facing=north,up=true": {
       "model": "manors_bounty:block/picnic_mat_blockstate_0"
+    },
+    "facing=east,up=true": {
+      "model": "manors_bounty:block/picnic_mat_blockstate_0",
+      "y": 90
+    },
+    "facing=south,up=true": {
+      "model": "manors_bounty:block/picnic_mat_blockstate_0",
+      "y": 180
+    },
+    "facing=west,up=true": {
+      "model": "manors_bounty:block/picnic_mat_blockstate_0",
+      "y": 270
     }
   }
 }

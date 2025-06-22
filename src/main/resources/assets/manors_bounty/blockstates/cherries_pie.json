@@ -1,18 +1,15 @@
 {
   "variants": {
     "slice=0": {
-      "model": "manors_bounty:custom/cherries_pie_particle"
-    },
-    "slice=1": {
       "model": "manors_bounty:block/cherries_pie_blockstate_0"
     },
-    "slice=2": {
+    "slice=1": {
       "model": "manors_bounty:block/cherries_pie_blockstate_1"
     },
-    "slice=3": {
+    "slice=2": {
       "model": "manors_bounty:block/cherries_pie_blockstate_2"
     },
-    "slice=4": {
+    "slice=3": {
       "model": "manors_bounty:block/cherries_pie_blockstate_3"
     }
   }

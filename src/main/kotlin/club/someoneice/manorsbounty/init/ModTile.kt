@@ -1,10 +1,10 @@
 package club.someoneice.manorsbounty.init
 
 import club.someoneice.manorsbounty.ManorsBounty
-import club.someoneice.manorsbounty.common.tile.GEO_BLOCK_MAP
-import club.someoneice.manorsbounty.common.tile.SimpleGeoBlockTile
-import club.someoneice.manorsbounty.common.tile.TileFryer
-import club.someoneice.manorsbounty.common.tile.TileOven
+import club.someoneice.manorsbounty.common.block.RendererBigPie
+import club.someoneice.manorsbounty.common.block.RendererCarpet
+import club.someoneice.manorsbounty.common.tile.*
+import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraftforge.registries.DeferredRegister
@@ -28,8 +28,19 @@ object ModTile {
     val FRYER = REGISTRY.register("fryer_tile") { BlockEntityType.Builder.of(::TileFryer, ModBlocks.FRYER.get()).build(null) }
     val OVEN = REGISTRY.register("oven_tile") { BlockEntityType.Builder.of(::TileOven, ModBlocks.OVEN.get()).build(null) }
 
-    fun BlockEntityType<SimpleGeoBlockTile>.push(block: RegistryObject<out Block>): BlockEntityType<out SimpleGeoBlockTile> {
+    val CHERRIES_PIE: RegistryObject<BlockEntityType<out SimpleGeoBlockTile>> = REGISTRY.register("cherries_pie") { BlockEntityType.Builder.of(::SimpleGeoBlockTile, ModBlocks.CHERRIES_PIE.get()).build(null).push(ModBlocks.CHERRIES_PIE, RendererBigPie()) }
+    val TRUFFLE_PIE: RegistryObject<BlockEntityType<out SimpleGeoBlockTile>> = REGISTRY.register("truffle_pie") { BlockEntityType.Builder.of(::SimpleGeoBlockTile, ModBlocks.TRUFFLE_PIE.get()).build(null).push(ModBlocks.TRUFFLE_PIE, RendererBigPie()) }
+
+    val HOUNDSTOOTH_CARPET = REGISTRY.register("houndstooth_carpet") { BlockEntityType.Builder.of(::SimpleGeoBlockTile, ModBlocks.HOUNDSTOOTH_CARPET.get()).build(null).push(ModBlocks.HOUNDSTOOTH_CARPET, RendererCarpet()) }
+    val SHIRAZ_CARPET = REGISTRY.register("shiraz_carpet") { BlockEntityType.Builder.of(::SimpleGeoBlockTile, ModBlocks.SHIRAZ_CARPET.get()).build(null).push(ModBlocks.SHIRAZ_CARPET, RendererCarpet()) }
+    val MAGIC_CIRCLE_CARPET = REGISTRY.register("magic_circle_carpet") { BlockEntityType.Builder.of(::SimpleGeoBlockTile, ModBlocks.MAGIC_CIRCLE_CARPET.get()).build(null).push(ModBlocks.MAGIC_CIRCLE_CARPET, RendererCarpet()) }
+    val PICNIC_MAT = REGISTRY.register("picnic_mat") { BlockEntityType.Builder.of(::SimpleGeoBlockTile, ModBlocks.PICNIC_MAT.get()).build(null).push(ModBlocks.PICNIC_MAT, RendererCarpet()) }
+
+    fun BlockEntityType<SimpleGeoBlockTile>.push(block: RegistryObject<out Block>, render: BlockEntityRendererProvider<SimpleGeoBlockTile>? = null): BlockEntityType<out SimpleGeoBlockTile> {
         GEO_BLOCK_MAP[block] = this
+        render?.let {
+            GEO_BLOCK_RENDERER_MAP[block] = render
+        }
         return this
     }
 }

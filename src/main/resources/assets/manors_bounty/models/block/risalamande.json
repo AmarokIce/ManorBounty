@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"particle": "manors_bounty:texture/block/risalamande_block"
+		"particle": "manors_bounty:block/risalamande_block"
 	},
 	"elements": [
 		{
