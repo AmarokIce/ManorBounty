@@ -178,6 +178,17 @@ object ModItems {
     val CHERRIES_PIE_SLICE by REGISTRY.registerObject("cherries_pie_slice") { foodBase(8, 0.5f) }
     val TRUFFLE_PIE_SLICE by REGISTRY.registerObject("truffle_pie_slice") { foodBase(6, 0.3f) }
 
+    val TRUFFLE by REGISTRY.registerObject("truffle", ::item)
+    val PEARL_ROCK by REGISTRY.registerObject("pearl_rock", ::item)
+    val BUTTON_MUSHROOM by REGISTRY.registerObject("button_mushroom", ::item)
+    val COOKED_BUTTON_MUSHROOM by REGISTRY.registerObject("cooked_button_mushroom", ::item)
+    val WOOD_MUSHROOM by REGISTRY.registerObject("wood_mushroom", ::item)
+    val CORN by REGISTRY.registerObject("corn", ::item)
+
+    val CREATIVITY_MECHANISM by REGISTRY.registerObject("creativity_mechanism", ::item)
+    val SNOW_DYE by REGISTRY.registerObject("snow_dye", ::item)
+
+
     private fun itemWithoutAddToTab() = Item(Item.Properties())
     private fun item() = Item(Item.Properties()).addToTab()
     private fun block(block: Block) = BlockItem(block, Item.Properties()).addToTab()

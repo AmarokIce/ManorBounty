@@ -31,6 +31,8 @@ object ManorsBounty {
         ModConfig.read()
         ModCapabilitiesRoot
 
+        ModFluidType.REGISTRY.register(MOD_BUS)
+        // ModFluids.REGISTRY.register(MOD_BUS)
         ModItems.REGISTRY.register(MOD_BUS)
         ModBlocks.REGISTRY.register(MOD_BUS)
         ModBlocks.ITEMS.register(MOD_BUS)

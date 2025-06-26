@@ -1,27 +1,35 @@
 package club.someoneice.manorsbounty.common.block
 
+import club.someoneice.manorsbounty.ManorsBounty
 import club.someoneice.manorsbounty.asStack
 import club.someoneice.manorsbounty.init.ModBlocks
 import club.someoneice.manorsbounty.init.ModTabs.BUILDING_TAB
 import club.someoneice.manorsbounty.init.ModTabs.addToTab
+import net.minecraft.data.worldgen.features.FeatureUtils
+import net.minecraft.resources.ResourceKey
+import net.minecraft.util.RandomSource
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.block.*
+import net.minecraft.world.level.block.grower.AbstractTreeGrower
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.properties.BlockSetType
 import net.minecraft.world.level.block.state.properties.WoodType
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature
 import net.minecraft.world.level.storage.loot.LootParams
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams
 import thedarkcolour.kotlinforforge.forge.registerObject
+import java.util.*
 import java.util.function.Supplier
+import javax.annotation.CheckForNull
 
 
 // Fixme - Remove the leaves that never be used.
 @Suppress("unused")
-class WoodBlocks(val name: String, private val fruit: Supplier<Item>? = null) {
+class WoodBlocks(val name: String, private val fruit: Supplier<Item>? = null, saplingName: String? = null) {
     val LOG = "log".toRGName()
     val WOOD = "wood".toRGName()
     val STRIPPED_LOG = "log".toRGName("stripped")
@@ -54,6 +62,9 @@ class WoodBlocks(val name: String, private val fruit: Supplier<Item>? = null) {
     val PRESSURE_PLATE_BLOCK by ModBlocks.REGISTRY.registerObject(PRESSURE_PLATE, ::getPressurePlate)
     val BUTTON_BLOCK by ModBlocks.REGISTRY.registerObject(BUTTON, ::getButton)
 
+    @CheckForNull
+    val SAPLING_BLOCK = if (Objects.isNull(saplingName)) null else ModBlocks.REGISTRY.register(saplingName, ::createSapling)
+
     val LOG_ITEM by ModBlocks.ITEMS.registerObject(LOG) { BlockItem(LOG_BLOCK, Item.Properties()).addToTab(BUILDING_TAB) }
     val WOOD_ITEM by ModBlocks.ITEMS.registerObject(WOOD) { BlockItem(WOOD_BLOCK, Item.Properties()).addToTab(BUILDING_TAB) }
     val STRIPPED_LOG_ITEM by ModBlocks.ITEMS.registerObject(STRIPPED_LOG) { BlockItem(STRIPPED_LOG_BLOCK, Item.Properties()).addToTab(BUILDING_TAB) }
@@ -71,6 +82,8 @@ class WoodBlocks(val name: String, private val fruit: Supplier<Item>? = null) {
     val FENCE_GATE_ITEM by ModBlocks.ITEMS.registerObject(FENCE_GATE) { BlockItem(FENCE_GATE_BLOCK, Item.Properties()).addToTab(BUILDING_TAB) }
     val PRESSURE_PLATE_ITEM by ModBlocks.ITEMS.registerObject(PRESSURE_PLATE) { BlockItem(PRESSURE_PLATE_BLOCK, Item.Properties()).addToTab(BUILDING_TAB) }
     val BUTTON_ITEM by ModBlocks.ITEMS.registerObject(BUTTON) { BlockItem(BUTTON_BLOCK, Item.Properties()).addToTab(BUILDING_TAB) }
+
+    val SAPLING_ITEM = if (Objects.isNull(saplingName)) null else ModBlocks.ITEMS.register(saplingName) { BlockItem(SAPLING_BLOCK!!.get(), Item.Properties()).addToTab(BUILDING_TAB) }
 
     private fun getWoodBlock() = RotatedPillarBlock(Properties.copy(Blocks.OAK_WOOD))
     private fun getLeaves() = fruit?.let(::FruitLeaf) ?: LeavesBlock(Properties.copy(Blocks.OAK_LEAVES))
@@ -172,6 +185,9 @@ class WoodBlocks(val name: String, private val fruit: Supplier<Item>? = null) {
             return list
         }
     }
+
+    private fun createSapling() = SaplingBlock(object: AbstractTreeGrower() {
+        override fun getConfiguredFeature(pRandom: RandomSource, pHasFlowers: Boolean): ResourceKey<ConfiguredFeature<*, *>> = FeatureUtils.createKey(ManorsBounty.ID + ":" + this@WoodBlocks.name) }, Properties.copy(Blocks.OAK_SAPLING))
 
     private fun String.toRGName() = "${name}_${this}"
     private fun String.toRGName(first: String) = "${first}_${name}_${this}"

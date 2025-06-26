@@ -4,14 +4,21 @@ import club.someoneice.manorsbounty.ManorsBounty
 import club.someoneice.manorsbounty.asStack
 import club.someoneice.manorsbounty.init.ModBlocks
 import club.someoneice.manorsbounty.init.ModTile
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.resources.ResourceLocation
+import net.minecraft.server.level.ServerLevel
+import net.minecraft.world.InteractionHand
+import net.minecraft.world.InteractionResultHolder
+import net.minecraft.world.entity.player.Player
+import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.context.BlockPlaceContext
 import net.minecraft.world.level.BlockGetter
+import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.*
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.entity.BlockEntityType
@@ -21,13 +28,19 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.minecraft.world.level.storage.loot.LootParams
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.VoxelShape
+import net.minecraftforge.client.extensions.common.IClientItemExtensions
 import net.minecraftforge.registries.RegistryObject
 import software.bernie.geckolib.animatable.GeoBlockEntity
+import software.bernie.geckolib.animatable.GeoItem
+import software.bernie.geckolib.animatable.SingletonGeoAnimatable
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache
 import software.bernie.geckolib.core.animation.AnimatableManager
+import software.bernie.geckolib.core.animation.AnimatableManager.ControllerRegistrar
 import software.bernie.geckolib.model.GeoModel
 import software.bernie.geckolib.renderer.GeoBlockRenderer
+import software.bernie.geckolib.renderer.GeoItemRenderer
 import software.bernie.geckolib.util.GeckoLibUtil
+import java.util.function.Consumer
 
 // TODO: Rename the classes. These are all in based not the object!
 class SimpleGeoBlockTile(tile: BlockEntityType<out SimpleGeoBlockTile>, pPos: BlockPos, pBlockState: BlockState) : BlockEntity(tile, pPos, pBlockState, ), GeoBlockEntity {
@@ -57,7 +70,7 @@ open class SimpleGeoBlock(properties: Properties = Properties.copy(Blocks.STONE)
     }
 }
 
-open class SimpleGeoBlockWithFacing(properties: Properties = Properties.copy(Blocks.STONE).noOcclusion()): SimpleGeoBlock(properties) {
+open class SimpleGeoBlockWithFacing(properties: Properties = Properties.copy(Blocks.STONE).noOcclusion().noCollission()): SimpleGeoBlock(properties) {
     companion object {
         val FACING = BlockStateProperties.FACING
     }
@@ -116,6 +129,49 @@ class SimpleGeoBlockRenderer(name: String) : GeoBlockRenderer<SimpleGeoBlockTile
     }
 }
 
+class SimpleGeoBlockItem(block: Block, val name: String) : BlockItem(block, Properties()), GeoItem {
+    private val cache: AnimatableInstanceCache = GeckoLibUtil.createInstanceCache(this)
+
+    init {
+        SingletonGeoAnimatable.registerSyncedAnimatable(this)
+    }
+
+    override fun initializeClient(consumer: Consumer<IClientItemExtensions?>) {
+        consumer.accept(object : IClientItemExtensions {
+            override fun getCustomRenderer(): BlockEntityWithoutLevelRenderer {
+                return GeoItemRenderer(object: GeoModel<SimpleGeoBlockItem>() {
+                    override fun getModelResource(p0: SimpleGeoBlockItem): ResourceLocation {
+                        return ResourceLocation.fromNamespaceAndPath(ManorsBounty.ID, "geo/${name}.geo.json")
+                    }
+
+                    override fun getTextureResource(p0: SimpleGeoBlockItem): ResourceLocation {
+                        return ResourceLocation.fromNamespaceAndPath(ManorsBounty.ID, "textures/block/${name}.png")
+                    }
+
+                    override fun getAnimationResource(p0: SimpleGeoBlockItem): ResourceLocation {
+                        return ResourceLocation.fromNamespaceAndPath(ManorsBounty.ID, "geo/anim/${name}.animation.json")
+                    }
+                })
+            }
+        })
+    }
+
+    override fun registerControllers(controllers: ControllerRegistrar) {
+    }
+
+    override fun use(level: Level, player: Player, hand: InteractionHand): InteractionResultHolder<ItemStack> {
+        if (level is ServerLevel) {
+            triggerAnim<Any>(player, GeoItem.getOrAssignId(player.getItemInHand(hand), level), "Activation", "activate")
+        }
+
+        return super.use(level, player, hand)
+    }
+
+    override fun getAnimatableInstanceCache(): AnimatableInstanceCache {
+        return this.cache
+    }
+}
+
 val GEO_BLOCK_RENDERER_MAP = HashMap<RegistryObject<out Block>, BlockEntityRendererProvider<SimpleGeoBlockTile>>()
 val GEO_BLOCK_MAP = HashMap<RegistryObject<out Block>, BlockEntityType<SimpleGeoBlockTile>>()
 
@@ -128,3 +184,4 @@ fun findTile(block: Block): BlockEntityType<SimpleGeoBlockTile> {
 
     throw NoSuchElementException("Can't find the tile from block. Did you forget to register to the GEO BLOCK MAP?")
 }
+

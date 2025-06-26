@@ -6,6 +6,7 @@ import club.someoneice.manorsbounty.asStack
 import club.someoneice.manorsbounty.client.ClientHandler.sendToRenderList
 import club.someoneice.manorsbounty.common.block.*
 import club.someoneice.manorsbounty.common.tile.SimpleGeoBlock
+import club.someoneice.manorsbounty.common.tile.SimpleGeoBlockItem
 import club.someoneice.manorsbounty.common.tile.SimpleGeoBlockTile
 import club.someoneice.manorsbounty.common.tile.SimpleGeoBlockWithFacing
 import club.someoneice.manorsbounty.giveOrDropItemStack
@@ -14,6 +15,7 @@ import club.someoneice.manorsbounty.init.ModTabs.DEFAULT_TAB
 import club.someoneice.manorsbounty.init.ModTabs.TabList
 import club.someoneice.manorsbounty.init.ModTabs.addToTab
 import club.someoneice.manorsbounty.init.ModTile.push
+import com.google.common.collect.Lists
 import net.minecraft.core.BlockPos
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.player.Player
@@ -37,6 +39,7 @@ import thedarkcolour.kotlinforforge.forge.registerObject
 import java.awt.Rectangle
 import java.util.function.Supplier
 import kotlin.random.Random
+
 
 @Suppress("unused")
 object ModBlocks {
@@ -64,8 +67,10 @@ object ModBlocks {
 
     val FRYER = REGISTRY.register("fryer", ::BlockFryer)
     val OVEN = REGISTRY.register("oven", ::BlockOven)
+    val ICE_CREAM_MACHINE = REGISTRY.register("ice_cream_machine", ::IceCreamMachine)
     val FRYER_ITEM = ITEMS.register("fryer") { BlockItem(FRYER.get(), Properties()).sendToRenderList().addToTab() }
     val OVEN_ITEM = ITEMS.register("oven") { BlockItem(OVEN.get(), Properties()).sendToRenderList().addToTab() }
+    val ICE_CREAM_MACHINE_ITEM = ITEMS.register("ice_cream_machine") { BlockItem(ICE_CREAM_MACHINE.get(), Properties()).sendToRenderList().addToTab() }
 
     val CARAMEL_CHOCOLATE_CAKE = REGISTRY.register("caramel_chocolate_cake") { CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)) }
     val SWEET_BERRY_CAKE = REGISTRY.register("sweet_berry_cake") { CakeBlock(BlockBehaviour.Properties.copy(Blocks.CAKE)) }
@@ -76,16 +81,16 @@ object ModBlocks {
     val CHORUS_FLOWER_JELLY_CAKE_ITEM = ITEMS.register("chorus_flower_jelly_cake") { BlockItem(CHORUS_FLOWER_JELLY_CAKE.get(), Properties()).addToTab() }
     val NETHER_WART_SOUL_CAKE_ITEM = ITEMS.register("nether_wart_soul_cake") { BlockItem(NETHER_WART_SOUL_CAKE.get(), Properties()).addToTab() }
 
-    val SCOTS_PINE = WoodBlocks("scots_pine")
-    val CHERRIES = WoodBlocks("cherries_tree")
-    val STARFRUIT = WoodBlocks("starfruit_tree")
-    val OLIVE = WoodBlocks("olive_tree")
+    val SCOTS_PINE = WoodBlocks("scots_pine", null, "scots_pine_sapling")
+    val CHERRIES = WoodBlocks("cherries_tree", ModItems::CHERRY, "cherries_seed")
+    val STARFRUIT = WoodBlocks("starfruit_tree", ModItems::STARFRUIT, "starfruit_seed")
+    val OLIVE = WoodBlocks("olive_tree", ModItems::OLIVE, "olive_fruit_seed")
     val RUTECEAE = WoodBlocks("rutaceae_tree")
     val ROASCEAE = WoodBlocks("rosaceae_tree")
-    val DURIAN = WoodBlocks("durian_tree")
-    val MANGO = WoodBlocks("mango_tree")
-    val KIWI = WoodBlocks("kiwifruit_tree")
-    val AVOCADO = WoodBlocks("avocado_tree")
+    val DURIAN = WoodBlocks("durian_tree", ModItems::DURIAN_CRISP, "durian_seed")
+    val MANGO = WoodBlocks("mango_tree", ModItems::MANGO, "mango_seed")
+    val KIWI = WoodBlocks("kiwifruit_tree", ModItems::KIWIFRUIT, "kiwifruit_seed")
+    val AVOCADO = WoodBlocks("avocado_tree", ModItems::AVOCADO, "avocado_seed")
 
     val CHERRIES_PIE = REGISTRY.register("cherries_pie") { BlockBigPie("cherries_pie") { ModItems.CHERRIES_PIE_SLICE } }
     val CHERRIES_PIE_ITEM = ITEMS.register("cherries_pie") { BlockItem(CHERRIES_PIE.get(), Properties()).sendToRenderList().addToTab() }
@@ -138,6 +143,70 @@ object ModBlocks {
     val CHRISTMAS_RIBBON_YELLOW = createSimpleGeoBlockWithFacing("christmas_ribbon_yellow")
     val CHRISTMAS_RIBBON_RED = createSimpleGeoBlockWithFacing("christmas_ribbon_red")
 
+    val BLACK_DIRT = createBlockWithItem("black_dirt", BUILDING_TAB)
+    val SNOWY_BLACK_DIRT = createBlockWithItem("snowy_black_dirt", BUILDING_TAB)
+    val RICH_BLACK_DIRT = createBlockWithItem("rich_black_dirt", BUILDING_TAB)
+    val RICH_BLACK_DIRT_FARMLAND = createBlockWithItem("rich_black_dirt_farmland", BUILDING_TAB)
+    val SNOWY_MYCELIUM = createBlockWithItem("snowy_mycelium", BUILDING_TAB)
+    val VOLCANIC_MUD = createBlockWithItem("volcanic_mud", BUILDING_TAB)
+    val BUTTON_MUSHROOM_BLOCK = createBlockWithItem("button_mushroom_block", BUILDING_TAB)
+    val DEBRISHROOM = createBlockWithItem("debrishroom", BUILDING_TAB)
+
+    val BLACK_DIRT_TRUFFLE = blockWithDropItem("black_dirt_truffle", ModItems::TRUFFLE)
+    val PEARL_ROCK_ORE = blockWithDropItem("pearl_rock_ore", ModItems::PEARL_ROCK)
+    val DEEPSLATE_PEARL_ROCK_ORE = blockWithDropItem("deepslate_pearl_rock_ore", ModItems::PEARL_ROCK)
+
+    val SOUL_ROSE = createFlower("soul_rose")
+    val RADDE = createFlower("radde")
+    val GALANTHUS_NIVALIS = createFlower("galanthus_nivalis")
+    val WINTER_ROSE = createFlower("winter_rose")
+    val ALFALFA_PLANT = createFlower("alfalfa_plant")
+    val LAVENDER = createFlower("lavender")
+
+    val CUTTING_BOARD = createBlockWithItem("cutting_board")
+
+    // val VANILLA_ICE_CREAM = createFluid("vanilla_ice_cream_fluid", ModFluids::VANILLA)
+    // val BLUEBERRY_ICE_CREAM = createFluid("blueberry_ice_cream_fluid", ModFluids::BLUEBERRY)
+    // val CHERRIES_ICE_CREAM = createFluid("cherries_ice_cream_fluid", ModFluids::CHERRIES)
+    // val CHOCOLATE_ICE_CREAM = createFluid("chocolate_ice_cream_fluid", ModFluids::CHOCOLATE)
+    // val STARFRUIT_ICE_CREAM = createFluid("satrfruit_ice_cream_fluid", ModFluids::STARFRUIT)
+    // val JALAPENO_ICE_CREAM = createFluid("jalapeno_ice_cream_fluid", ModFluids::JALAPENO)
+
+    // val CAKE_LIQUID = createFluid("cake_liquid", ModFluids::CAKE)
+    // val HOT_SPRING = createFluid("hot_spring", ModFluids::HOT_SPRING)
+
+/*    private fun createFluid(name: String, fluid: Supplier<FlowingFluid>): RegistryObject<LiquidBlock> {
+        val block = REGISTRY.register(name) { LiquidBlock(fluid, BlockBehaviour.Properties.copy(Blocks.WATER)) }
+        ITEMS.register(name + "_bucket") { BucketItem(fluid, Properties().stacksTo(1).craftRemainder(Items.BUCKET)) }
+        return block
+    }*/
+
+    private fun blockWithDropItem(name: String, item: Supplier<Item>): Supplier<out Block> {
+        val block = REGISTRY.register(name) { object: BlockBase() {
+            override fun getDrops(pState: BlockState, pParams: LootParams.Builder): List<ItemStack> {
+                return Lists.newArrayList(item.get().defaultInstance).let {
+                    if (name == "black_dirt_truffle") {
+                        it.add(this.asStack())
+                    }
+                    it
+                }
+            }
+        }}
+        ITEMS.registerObject(name) { BlockItem(block.get(), Properties()).addToTab(BUILDING_TAB) }
+        return block
+    }
+
+    fun createFlower(name: String): Supplier<out Block> {
+        val block = REGISTRY.register(name) { BlockBase(BlockBehaviour.Properties.copy(Blocks.CHORUS_FLOWER)) }
+        ITEMS.registerObject(name) { BlockItem(block.get(), Properties()).addToTab() }
+        return block
+    }
+
+    fun createGrass(): Supplier<out Block> {
+        val block = REGISTRY.register("frigid_grass") { Block(BlockBehaviour.Properties.copy(Blocks.GRASS)) }
+        ITEMS.registerObject("frigid_grass") { BlockItem(block.get(), Properties()).addToTab() }
+        return block
+    }
 
     fun createBlockWithItem(name: String, tab: TabList = DEFAULT_TAB): Supplier<out Block> {
         val block = REGISTRY.register(name, ::BlockBase)
@@ -200,8 +269,7 @@ object ModBlocks {
     private fun createSimpleGeoBlockWithFacing(name: String): Supplier<out Block> {
         val block = REGISTRY.register(name, ::SimpleGeoBlockWithFacing)
         ModTile.REGISTRY.register(name) { BlockEntityType.Builder.of(::SimpleGeoBlockTile, block.get()).build(null).push(block) }
-
-        ITEMS.registerObject(name) { BlockItem(block.get(), Properties()).addToTab(BUILDING_TAB) }
+        ITEMS.registerObject(name) { SimpleGeoBlockItem(block.get(), name).addToTab(BUILDING_TAB) }
         return block
     }
 }
