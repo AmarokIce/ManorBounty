@@ -6,6 +6,8 @@ import club.someoneice.manorsbounty.asStack
 import club.someoneice.manorsbounty.common.block.BlockBase
 import club.someoneice.manorsbounty.common.block.BlockBush
 import club.someoneice.manorsbounty.common.item.ItemFoodBlock
+import club.someoneice.manorsbounty.common.item.PineappleCrop
+import club.someoneice.manorsbounty.common.item.Strawberry
 import club.someoneice.manorsbounty.giveOrDropItemStack
 import club.someoneice.manorsbounty.init.ModBlocks.MARBLE_BOWL
 import club.someoneice.manorsbounty.init.ModTabs.addToTab
@@ -66,7 +68,7 @@ object ModItems {
     val DRAGON_FRUIT_SLICE by REGISTRY.registerObject("dragon_fruit_slice", ::dragonFruit)
     val APPLE_SLICE by REGISTRY.registerObject("apple_slice") { foodFruit(2, 0.1f) }
 
-    val STRAWBERRY by REGISTRY.registerObject("strawberry") { foodBerry(3) }
+    val STRAWBERRY by REGISTRY.registerObject("strawberry", ::Strawberry)
     val WHITE_STRAWBERRY by REGISTRY.registerObject("white_strawberry") { foodBerry(3) }
     val BLUEBERRY = foodBerry("blueberry")
     val CRANBERRY= foodBerry("cranberry")
@@ -188,6 +190,7 @@ object ModItems {
     val CREATIVITY_MECHANISM by REGISTRY.registerObject("creativity_mechanism", ::item)
     val SNOW_DYE by REGISTRY.registerObject("snow_dye", ::item)
 
+    val PINEAPPLE_CROP by REGISTRY.registerObject("pineapple_crop", ::PineappleCrop)
 
     private fun itemWithoutAddToTab() = Item(Item.Properties())
     private fun item() = Item(Item.Properties()).addToTab()

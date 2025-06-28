@@ -20,16 +20,15 @@ import net.minecraft.core.BlockPos
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.food.FoodProperties
-import net.minecraft.world.item.BlockItem
-import net.minecraft.world.item.Item
+import net.minecraft.world.item.*
 import net.minecraft.world.item.Item.Properties
-import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.*
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.block.state.BlockState
+import net.minecraft.world.level.material.FlowingFluid
 import net.minecraft.world.level.storage.loot.LootParams
 import net.minecraft.world.phys.shapes.CollisionContext
 import net.minecraft.world.phys.shapes.VoxelShape
@@ -125,6 +124,9 @@ object ModBlocks {
     val SNOW_CONCRETE_POWDER = createBlockWithItem("snow_concrete_powder", BUILDING_TAB)
     val SNOW_CONCRETE = createBlockWithItem("snow_concrete", BUILDING_TAB)
 
+    val SNOW_GLASS = createBlockWithItem("snow_glass", BUILDING_TAB) { GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS)) }
+    val SNOW_GLASS_PANE = createBlockWithItem("snow_glass_pane", BUILDING_TAB) { IronBarsBlock(BlockBehaviour.Properties.copy(Blocks.GLASS_PANE)) }
+
     val GIFT_TALL_RED = createGiftWithItem("gift_tall_red", false)
     val GIFT_TALL_GREEN = createGiftWithItem("gift_tall_green", false)
     val GIFT_TALL_BLUE = createGiftWithItem("gift_tall_blue", false)
@@ -165,21 +167,24 @@ object ModBlocks {
 
     val CUTTING_BOARD = createBlockWithItem("cutting_board")
 
-    // val VANILLA_ICE_CREAM = createFluid("vanilla_ice_cream_fluid", ModFluids::VANILLA)
-    // val BLUEBERRY_ICE_CREAM = createFluid("blueberry_ice_cream_fluid", ModFluids::BLUEBERRY)
-    // val CHERRIES_ICE_CREAM = createFluid("cherries_ice_cream_fluid", ModFluids::CHERRIES)
-    // val CHOCOLATE_ICE_CREAM = createFluid("chocolate_ice_cream_fluid", ModFluids::CHOCOLATE)
-    // val STARFRUIT_ICE_CREAM = createFluid("satrfruit_ice_cream_fluid", ModFluids::STARFRUIT)
-    // val JALAPENO_ICE_CREAM = createFluid("jalapeno_ice_cream_fluid", ModFluids::JALAPENO)
+    val VANILLA_ICE_CREAM = createFluid("vanilla_ice_cream_fluid", ModFluids::VANILLA)
+    val BLUEBERRY_ICE_CREAM = createFluid("blueberry_ice_cream_fluid", ModFluids::BLUEBERRY)
+    val CHERRIES_ICE_CREAM = createFluid("cherries_ice_cream_fluid", ModFluids::CHERRIES)
+    val CHOCOLATE_ICE_CREAM = createFluid("chocolate_ice_cream_fluid", ModFluids::CHOCOLATE)
+    val STARFRUIT_ICE_CREAM = createFluid("satrfruit_ice_cream_fluid", ModFluids::STARFRUIT)
+    val JALAPENO_ICE_CREAM = createFluid("jalapeno_ice_cream_fluid", ModFluids::JALAPENO)
 
-    // val CAKE_LIQUID = createFluid("cake_liquid", ModFluids::CAKE)
-    // val HOT_SPRING = createFluid("hot_spring", ModFluids::HOT_SPRING)
+    val CAKE_LIQUID = createFluid("cake_liquid", ModFluids::CAKE)
+    val HOT_SPRING = createFluid("hot_spring", ModFluids::HOT_SPRING)
 
-/*    private fun createFluid(name: String, fluid: Supplier<FlowingFluid>): RegistryObject<LiquidBlock> {
+    val STRAWBERRY_BUSH by REGISTRY.registerObject("strawberry_bush", ::StrawberryBush)
+    val PINEAPPLE_CROP by REGISTRY.registerObject("pineapple_crop", ::PineappleCrop)
+
+    private fun createFluid(name: String, fluid: Supplier<FlowingFluid>): Pair<Supplier<out Block>, Supplier<out Item>> {
         val block = REGISTRY.register(name) { LiquidBlock(fluid, BlockBehaviour.Properties.copy(Blocks.WATER)) }
-        ITEMS.register(name + "_bucket") { BucketItem(fluid, Properties().stacksTo(1).craftRemainder(Items.BUCKET)) }
-        return block
-    }*/
+        val item = ITEMS.register(name + "_bucket") { BucketItem(fluid, Properties().stacksTo(1).craftRemainder(Items.BUCKET)).addToTab() }
+        return Pair(block, item)
+    }
 
     private fun blockWithDropItem(name: String, item: Supplier<Item>): Supplier<out Block> {
         val block = REGISTRY.register(name) { object: BlockBase() {

@@ -27,6 +27,7 @@ object ModTile {
 
     val FRYER = REGISTRY.register("fryer_tile") { BlockEntityType.Builder.of(::TileFryer, ModBlocks.FRYER.get()).build(null) }
     val OVEN = REGISTRY.register("oven_tile") { BlockEntityType.Builder.of(::TileOven, ModBlocks.OVEN.get()).build(null) }
+    val ICE_CREAM = REGISTRY.register("ice_cream_machine") { BlockEntityType.Builder.of(::TileIceCreamMachine, ModBlocks.ICE_CREAM_MACHINE.get()).build(null) }
 
     val CHERRIES_PIE: RegistryObject<BlockEntityType<out SimpleGeoBlockTile>> = REGISTRY.register("cherries_pie") { BlockEntityType.Builder.of(::SimpleGeoBlockTile, ModBlocks.CHERRIES_PIE.get()).build(null).push(ModBlocks.CHERRIES_PIE, RendererBigPie()) }
     val TRUFFLE_PIE: RegistryObject<BlockEntityType<out SimpleGeoBlockTile>> = REGISTRY.register("truffle_pie") { BlockEntityType.Builder.of(::SimpleGeoBlockTile, ModBlocks.TRUFFLE_PIE.get()).build(null).push(ModBlocks.TRUFFLE_PIE, RendererBigPie()) }

@@ -1,6 +1,5 @@
 package club.someoneice.manorsbounty.init
 
-/*
 import club.someoneice.manorsbounty.ManorsBounty
 import club.someoneice.manorsbounty.init.ModFluids.BLUEBERRY
 import club.someoneice.manorsbounty.init.ModFluids.BLUEBERRY_FLOWING
@@ -21,21 +20,22 @@ import club.someoneice.manorsbounty.init.ModFluids.VANILLA_FLOWING
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.world.item.Item
-import net.minecraft.world.item.Items
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.LevelReader
-import net.minecraft.world.level.block.LiquidBlock
+import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.state.BlockState
+import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.material.Fluid
 import net.minecraft.world.level.material.FluidState
+import net.minecraft.world.level.material.WaterFluid
 import net.minecraft.world.phys.Vec3
 import net.minecraft.world.phys.shapes.Shapes
 import net.minecraft.world.phys.shapes.VoxelShape
 import net.minecraftforge.fluids.FluidType
 import net.minecraftforge.registries.DeferredRegister
 import net.minecraftforge.registries.ForgeRegistries
-import net.minecraftforge.registries.RegistryObject
 import thedarkcolour.kotlinforforge.forge.registerObject
+import java.util.function.Supplier
 
 object ModFluids {
     val REGISTRY: DeferredRegister<Fluid> = DeferredRegister.create(ForgeRegistries.FLUIDS, ManorsBounty.ID)
@@ -65,17 +65,18 @@ object ModFluids {
     val HOT_SPRING by REGISTRY.registerObject("hot_spring", HotSpring::Source)
 }
 
-abstract class ModFluid: Fluid() {
+abstract class ModFluid: WaterFluid() {
     override fun getFluidType(): FluidType = ModFluidType.MODTYPE.get()
-    override fun getBucket(): Item = Items.WATER_BUCKET
-    // override fun getFlowing(): Fluid = getModFlowing()
-    // override fun getSource(): Fluid = getModSource()
+    override fun getBucket(): Item = getModBucket().second.get()
+    override fun getFlowing(): Fluid = getModFlowing()
+    override fun getSource(): Fluid = getModSource()
     override fun isSource(pState: FluidState): Boolean = true
     override fun getAmount(pState: FluidState): Int = 8
 
+
     abstract fun getModFlowing(): Fluid
     abstract fun getModSource(): Fluid
-    abstract fun getModBucket(): RegistryObject<LiquidBlock>
+    abstract fun getModBucket(): Pair<Supplier<out Block>, Supplier<out Item>>
 
     override fun getExplosionResistance(): Float = 200f
 
@@ -95,10 +96,10 @@ abstract class ModFluid: Fluid() {
 
     override fun getHeight(pState: FluidState, pLevel: BlockGetter, pPos: BlockPos): Float = 1.0f
 
-    override fun getOwnHeight(pState: FluidState): Float = pState.amount / 9.0F;
+    override fun getOwnHeight(pState: FluidState): Float = pState.amount / 9.0F
 
     override fun createLegacyBlock(pState: FluidState): BlockState {
-        return this.getModBucket().get().defaultBlockState()
+        return this.getModBucket().first.get().defaultBlockState()
     }
 
     override fun getShape(pState: FluidState, pLevel: BlockGetter, pPos: BlockPos): VoxelShape {
@@ -106,6 +107,11 @@ abstract class ModFluid: Fluid() {
     }
 
     abstract class Flowing : ModFluid() {
+        override fun createFluidStateDefinition(pBuilder: StateDefinition.Builder<Fluid, FluidState>) {
+            super.createFluidStateDefinition(pBuilder)
+            pBuilder.add(LEVEL)
+        }
+
         override fun isSource(pState: FluidState): Boolean = false
         // override fun getAmount(pState: FluidState): Int = pState.getValue(LEVEL)
         override fun getAmount(pState: FluidState): Int = 8
@@ -121,13 +127,13 @@ class Vanilla {
     class Flowing: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = VANILLA_FLOWING
         override fun getModSource(): Fluid = VANILLA
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.VANILLA_ICE_CREAM
+        override fun getModBucket() = ModBlocks.VANILLA_ICE_CREAM
     }
 
     class Source: ModFluid.Source() {
         override fun getModFlowing(): Fluid = VANILLA_FLOWING
         override fun getModSource(): Fluid = VANILLA
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.VANILLA_ICE_CREAM
+        override fun getModBucket() = ModBlocks.VANILLA_ICE_CREAM
     }
 }
 
@@ -135,13 +141,13 @@ class Blueberry {
     class Flowing: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = BLUEBERRY_FLOWING
         override fun getModSource(): Fluid = BLUEBERRY
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.BLUEBERRY_ICE_CREAM
+        override fun getModBucket() = ModBlocks.BLUEBERRY_ICE_CREAM
     }
 
     class Source: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = BLUEBERRY_FLOWING
         override fun getModSource(): Fluid = BLUEBERRY
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.BLUEBERRY_ICE_CREAM
+        override fun getModBucket() = ModBlocks.BLUEBERRY_ICE_CREAM
     }
 }
 
@@ -149,13 +155,13 @@ class Cherries {
     class Flowing: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = CHERRIES_FLOWING
         override fun getModSource(): Fluid = CHERRIES
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.CHERRIES_ICE_CREAM
+        override fun getModBucket() = ModBlocks.CHERRIES_ICE_CREAM
     }
 
     class Source: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = CHERRIES_FLOWING
         override fun getModSource(): Fluid = CHERRIES
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.BLUEBERRY_ICE_CREAM
+        override fun getModBucket() = ModBlocks.BLUEBERRY_ICE_CREAM
     }
 }
 
@@ -163,13 +169,13 @@ class Chocolate {
     class Flowing: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = CHOCOLATE_FLOWING
         override fun getModSource(): Fluid = CHOCOLATE
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.CHOCOLATE_ICE_CREAM
+        override fun getModBucket() = ModBlocks.CHOCOLATE_ICE_CREAM
     }
 
     class Source: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = CHOCOLATE_FLOWING
         override fun getModSource(): Fluid = CHOCOLATE
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.CHOCOLATE_ICE_CREAM
+        override fun getModBucket() = ModBlocks.CHOCOLATE_ICE_CREAM
     }
 }
 
@@ -177,13 +183,13 @@ class Starfruit {
     class Flowing: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = STARFRUIT_FLOWING
         override fun getModSource(): Fluid = STARFRUIT
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.STARFRUIT_ICE_CREAM
+        override fun getModBucket() = ModBlocks.STARFRUIT_ICE_CREAM
     }
 
     class Source: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = STARFRUIT_FLOWING
         override fun getModSource(): Fluid = STARFRUIT
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.STARFRUIT_ICE_CREAM
+        override fun getModBucket() = ModBlocks.STARFRUIT_ICE_CREAM
     }
 }
 
@@ -191,13 +197,13 @@ class Jalapeno {
     class Flowing: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = JALAPENO_FLOWING
         override fun getModSource(): Fluid = JALAPENO
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.JALAPENO_ICE_CREAM
+        override fun getModBucket() = ModBlocks.JALAPENO_ICE_CREAM
     }
 
     class Source: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = JALAPENO_FLOWING
         override fun getModSource(): Fluid = JALAPENO
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.JALAPENO_ICE_CREAM
+        override fun getModBucket() = ModBlocks.JALAPENO_ICE_CREAM
     }
 }
 
@@ -205,13 +211,13 @@ class Cake {
     class Flowing: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = CAKE_FLOWING
         override fun getModSource(): Fluid = CAKE
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.JALAPENO_ICE_CREAM
+        override fun getModBucket() = ModBlocks.JALAPENO_ICE_CREAM
     }
 
     class Source: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = JALAPENO_FLOWING
         override fun getModSource(): Fluid = CAKE
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.CAKE_LIQUID
+        override fun getModBucket() = ModBlocks.CAKE_LIQUID
     }
 }
 
@@ -219,13 +225,12 @@ class HotSpring {
     class Flowing: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = HOT_SPRING_FLOWING
         override fun getModSource(): Fluid = HOT_SPRING
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.JALAPENO_ICE_CREAM
+        override fun getModBucket() = ModBlocks.JALAPENO_ICE_CREAM
     }
 
     class Source: ModFluid.Flowing() {
         override fun getModFlowing(): Fluid = HOT_SPRING_FLOWING
         override fun getModSource(): Fluid = HOT_SPRING
-        override fun getModBucket(): RegistryObject<LiquidBlock> = ModBlocks.HOT_SPRING
+        override fun getModBucket() = ModBlocks.HOT_SPRING
     }
 }
-*/

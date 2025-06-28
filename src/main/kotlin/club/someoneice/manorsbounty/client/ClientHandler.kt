@@ -1,6 +1,7 @@
 package club.someoneice.manorsbounty.client
 
 import club.someoneice.manorsbounty.client.gui.FryerScreen
+import club.someoneice.manorsbounty.client.gui.IceCreamMachineScreen
 import club.someoneice.manorsbounty.client.gui.OvenScreen
 import club.someoneice.manorsbounty.common.tile.GEO_BLOCK_MAP
 import club.someoneice.manorsbounty.common.tile.GEO_BLOCK_RENDERER_MAP
@@ -24,12 +25,13 @@ object ClientHandler {
 
     fun onClientSetup(event: FMLClientSetupEvent) {
         event.enqueueWork {
-            while (ClientHandler.RENDER_LIST.isNotEmpty()) {
-                ItemBlockRenderTypes.setRenderLayer(ClientHandler.RENDER_LIST.pop().block, RenderType.translucent())
+            while (RENDER_LIST.isNotEmpty()) {
+                ItemBlockRenderTypes.setRenderLayer(RENDER_LIST.pop().block, RenderType.translucent())
             }
 
             MenuScreens.register(ModMenus.FRYER, ::FryerScreen)
             MenuScreens.register(ModMenus.OVEN, ::OvenScreen)
+            MenuScreens.register(ModMenus.ICE_CREAM, ::IceCreamMachineScreen)
         }
     }
 

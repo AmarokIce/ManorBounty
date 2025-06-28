@@ -2,6 +2,7 @@ package club.someoneice.manorsbounty
 
 import club.someoneice.manorsbounty.client.ClientHandler
 import club.someoneice.manorsbounty.common.network.FryerPacket
+import club.someoneice.manorsbounty.common.network.IceCreamPacket
 import club.someoneice.manorsbounty.common.network.OvenPacket
 import club.someoneice.manorsbounty.common.particles.Peach
 import club.someoneice.manorsbounty.common.particles.Pear
@@ -32,10 +33,10 @@ object ManorsBounty {
         ModCapabilitiesRoot
 
         ModFluidType.REGISTRY.register(MOD_BUS)
-        // ModFluids.REGISTRY.register(MOD_BUS)
         ModItems.REGISTRY.register(MOD_BUS)
         ModBlocks.REGISTRY.register(MOD_BUS)
         ModBlocks.ITEMS.register(MOD_BUS)
+        ModFluids.REGISTRY.register(MOD_BUS)
         ModTile.REGISTRY.register(MOD_BUS)
         ModMenus.REGISTER.register(MOD_BUS)
         ModEffects.REGISTRY.register(MOD_BUS)
@@ -53,6 +54,7 @@ object ManorsBounty {
         var id = 0
         MESSAGE_INSTANCE.registerMessage(id++, FryerPacket::class.java, FryerPacket::encodec, ::FryerPacket, FryerPacket::onMessage)
         MESSAGE_INSTANCE.registerMessage(id++, OvenPacket::class.java, OvenPacket::encodec, ::OvenPacket, OvenPacket::onMessage)
+        MESSAGE_INSTANCE.registerMessage(id++, IceCreamPacket::class.java, IceCreamPacket::encodec, ::IceCreamPacket, IceCreamPacket::onMessage)
     }
 
     fun commonInit(event: FMLCommonSetupEvent) {
